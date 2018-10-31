@@ -1,0 +1,2995 @@
+    /* "ArichToken.sol":26:4936  contract ArichToken {... */
+  mstore(0x40, 0x80)
+    /* "ArichToken.sol":1029:1578  function ArichToken(uint256 initialSupply) public {... */
+  callvalue
+    /* "--CODEGEN--":8:17   */
+  dup1
+    /* "--CODEGEN--":5:7   */
+  iszero
+  tag_1
+  jumpi
+    /* "--CODEGEN--":30:31   */
+  0x0
+    /* "--CODEGEN--":27:28   */
+  dup1
+    /* "--CODEGEN--":20:32   */
+  revert
+    /* "--CODEGEN--":5:7   */
+tag_1:
+    /* "ArichToken.sol":1029:1578  function ArichToken(uint256 initialSupply) public {... */
+  pop
+  mload(0x40)
+  0x20
+  dup1
+  bytecodeSize
+  dup4
+  codecopy
+  dup2
+  add
+  0x40
+  dup2
+  dup2
+  mstore
+  swap2
+  mload
+    /* "ArichToken.sol":1089:1094  owner */
+  0x0
+    /* "ArichToken.sol":1089:1107  owner = msg.sender */
+  dup1
+  sload
+  not(sub(exp(0x2, 0xa0), 0x1))
+  and
+    /* "ArichToken.sol":1097:1107  msg.sender */
+  caller
+    /* "ArichToken.sol":1089:1107  owner = msg.sender */
+  or
+  dup1
+  dup3
+  sstore
+    /* "ArichToken.sol":1177:1400  Account({last_balance: 0, ... */
+  0xa0
+  dup5
+  add
+  dup6
+  mstore
+  dup2
+  dup5
+  mstore
+    /* "ArichToken.sol":1029:1578  function ArichToken(uint256 initialSupply) public {... */
+  0x20
+    /* "ArichToken.sol":1177:1400  Account({last_balance: 0, ... */
+  dup1
+  dup6
+  add
+  dup4
+  dup2
+  mstore
+  dup7
+  dup7
+  add
+  dup5
+  dup2
+  mstore
+  dup8
+  mload
+  dup1
+  dup5
+  add
+  dup10
+  mstore
+  dup6
+  dup2
+  mstore
+  0x60
+  dup9
+  add
+  swap1
+  dup2
+  mstore
+  dup9
+  mload
+  dup1
+  dup6
+  add
+  dup11
+  mstore
+  dup7
+  dup2
+  mstore
+  0x80
+  dup10
+  add
+  mstore
+  sub(exp(0x2, 0xa0), 0x1)
+    /* "ArichToken.sol":1168:1173  owner */
+  swap5
+  swap1
+  swap5
+  and
+    /* "ArichToken.sol":1159:1174  walletOf[owner] */
+  dup6
+  mstore
+    /* "ArichToken.sol":1089:1107  owner = msg.sender */
+  0x1
+    /* "ArichToken.sol":1159:1174  walletOf[owner] */
+  dup1
+  dup5
+  mstore
+  swap8
+  swap1
+  swap5
+  keccak256
+    /* "ArichToken.sol":1159:1400  walletOf[owner] = Account({last_balance: 0, ... */
+  dup7
+  mload
+  dup2
+  sstore
+  swap1
+  mload
+  swap7
+  dup2
+  add
+  dup1
+  sload
+  swap5
+  mload
+  iszero
+  iszero
+    /* "ArichToken.sol":1089:1107  owner = msg.sender */
+  0x100
+    /* "ArichToken.sol":1159:1400  walletOf[owner] = Account({last_balance: 0, ... */
+  mul
+  not(0xff00)
+  swap9
+  iszero
+  iszero
+  not(0xff)
+  swap1
+  swap7
+  and
+  swap6
+  swap1
+  swap6
+  or
+  swap8
+  swap1
+  swap8
+  and
+  swap4
+  swap1
+  swap4
+  or
+  swap1
+  swap6
+  sstore
+  mload
+  dup1
+  mload
+    /* "ArichToken.sol":1029:1578  function ArichToken(uint256 initialSupply) public {... */
+  swap3
+  swap5
+    /* "ArichToken.sol":1159:1174  walletOf[owner] */
+  swap2
+  swap3
+    /* "ArichToken.sol":1159:1400  walletOf[owner] = Account({last_balance: 0, ... */
+  tag_4
+  swap3
+  0x2
+  dup6
+  add
+  swap3
+  add
+  swap1
+  jump	// in(tag_5)
+tag_4:
+  pop
+  0x80
+  dup3
+  add
+  mload
+  dup1
+  mload
+  tag_6
+  swap2
+  0x3
+  dup5
+  add
+  swap2
+  0x20
+  swap1
+  swap2
+  add
+  swap1
+  jump	// in(tag_5)
+tag_6:
+  pop
+  pop
+    /* "ArichToken.sol":1453:1469  balanceOf[owner] */
+  0x0
+    /* "ArichToken.sol":1463:1468  owner */
+  dup1
+  sload
+  sub(exp(0x2, 0xa0), 0x1)
+  swap1
+  dup2
+  and
+    /* "ArichToken.sol":1453:1469  balanceOf[owner] */
+  dup3
+  mstore
+    /* "ArichToken.sol":1453:1462  balanceOf */
+  0x2
+    /* "ArichToken.sol":1453:1469  balanceOf[owner] */
+  0x20
+  mstore
+  0x40
+  dup3
+  keccak256
+    /* "ArichToken.sol":1453:1485  balanceOf[owner] = initialSupply */
+  swap4
+  swap1
+  swap4
+  sstore
+    /* "ArichToken.sol":1565:1570  owner */
+  dup1
+  sload
+    /* "ArichToken.sol":1543:1559  created_accounts */
+  0x3
+    /* "--CODEGEN--":27:37   */
+  dup1
+  sload
+    /* "ArichToken.sol":1463:1468  owner */
+  0x1
+    /* "--CODEGEN--":23:41   */
+  dup2
+  add
+    /* "--CODEGEN--":45:68   */
+  dup3
+  sstore
+    /* "ArichToken.sol":1543:1571  created_accounts.push(owner) */
+  swap3
+  mstore
+  0xc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b
+  swap1
+  swap2
+  add
+  dup1
+  sload
+  not(sub(exp(0x2, 0xa0), 0x1))
+  and
+    /* "ArichToken.sol":1565:1570  owner */
+  swap2
+  swap1
+  swap4
+  and
+    /* "ArichToken.sol":1543:1571  created_accounts.push(owner) */
+  or
+  swap1
+  swap2
+  sstore
+  pop
+    /* "ArichToken.sol":26:4936  contract ArichToken {... */
+  jump(tag_8)
+tag_5:
+  dup3
+  dup1
+  sload
+  0x1
+  dup2
+  0x1
+  and
+  iszero
+  0x100
+  mul
+  sub
+  and
+  0x2
+  swap1
+  div
+  swap1
+  0x0
+  mstore
+  keccak256(0x0, 0x20)
+  swap1
+  0x1f
+  add
+  0x20
+  swap1
+  div
+  dup2
+  add
+  swap3
+  dup3
+  0x1f
+  lt
+  tag_10
+  jumpi
+  dup1
+  mload
+  not(0xff)
+  and
+  dup4
+  dup1
+  add
+  or
+  dup6
+  sstore
+  jump(tag_12)
+tag_10:
+  dup3
+  dup1
+  add
+  0x1
+  add
+  dup6
+  sstore
+  dup3
+  iszero
+  tag_12
+  jumpi
+  swap2
+  dup3
+  add
+tag_11:
+  dup3
+  dup2
+  gt
+  iszero
+  tag_12
+  jumpi
+  dup3
+  mload
+  dup3
+  sstore
+  swap2
+  0x20
+  add
+  swap2
+  swap1
+  0x1
+  add
+  swap1
+  jump(tag_11)
+tag_12:
+  pop
+  tag_13
+  swap3
+  swap2
+  pop
+  jump	// in(tag_14)
+tag_13:
+  pop
+  swap1
+  jump	// out
+tag_14:
+  tag_15
+  swap2
+  swap1
+tag_16:
+  dup1
+  dup3
+  gt
+  iszero
+  tag_13
+  jumpi
+  0x0
+  dup2
+  sstore
+  0x1
+  add
+  jump(tag_16)
+tag_15:
+  swap1
+  jump	// out
+tag_8:
+  dataSize(sub_0)
+  dup1
+  dataOffset(sub_0)
+  0x0
+  codecopy
+  0x0
+  return
+stop
+
+sub_0: assembly {
+        /* "ArichToken.sol":26:4936  contract ArichToken {... */
+      mstore(0x40, 0x80)
+      jumpi(tag_1, lt(calldatasize, 0x4))
+      and(div(calldataload(0x0), 0x100000000000000000000000000000000000000000000000000000000), 0xffffffff)
+      0x1982640c
+      dup2
+      eq
+      tag_2
+      jumpi
+      dup1
+      0x41c0e1b5
+      eq
+      tag_3
+      jumpi
+      dup1
+      0x70a08231
+      eq
+      tag_4
+      jumpi
+      dup1
+      0x714191c0
+      eq
+      tag_5
+      jumpi
+      dup1
+      0x788649ea
+      eq
+      tag_6
+      jumpi
+      dup1
+      0xa9059cbb
+      eq
+      tag_7
+      jumpi
+      dup1
+      0xa9abab0d
+      eq
+      tag_8
+      jumpi
+      dup1
+      0xb8cb65ee
+      eq
+      tag_9
+      jumpi
+      dup1
+      0xc6ed8990
+      eq
+      tag_10
+      jumpi
+      dup1
+      0xcd418e98
+      eq
+      tag_11
+      jumpi
+      dup1
+      0xf26c159f
+      eq
+      tag_12
+      jumpi
+    tag_1:
+      0x0
+      dup1
+      revert
+        /* "ArichToken.sol":262:306  mapping (address => Account) public walletOf */
+    tag_2:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_13
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_13:
+      pop
+        /* "ArichToken.sol":262:306  mapping (address => Account) public walletOf */
+      tag_14
+      and(calldataload(0x4), sub(exp(0x2, 0xa0), 0x1))
+      jump(tag_15)
+    tag_14:
+      mload(0x40)
+      dup1
+      dup7
+      dup2
+      mstore
+      0x20
+      add
+      dup6
+      iszero
+      iszero
+      iszero
+      iszero
+      dup2
+      mstore
+      0x20
+      add
+      dup5
+      iszero
+      iszero
+      iszero
+      iszero
+      dup2
+      mstore
+      0x20
+      add
+      dup1
+      0x20
+      add
+      dup1
+      0x20
+      add
+      dup4
+      dup2
+      sub
+      dup4
+      mstore
+      dup6
+      dup2
+      dup2
+      mload
+      dup2
+      mstore
+      0x20
+      add
+      swap2
+      pop
+      dup1
+      mload
+      swap1
+      0x20
+      add
+      swap1
+      dup1
+      dup4
+      dup4
+        /* "--CODEGEN--":23:24   */
+      0x0
+        /* "--CODEGEN--":8:108   */
+    tag_16:
+        /* "--CODEGEN--":33:36   */
+      dup4
+        /* "--CODEGEN--":30:31   */
+      dup2
+        /* "--CODEGEN--":27:37   */
+      lt
+        /* "--CODEGEN--":8:108   */
+      iszero
+      tag_17
+      jumpi
+        /* "--CODEGEN--":90:101   */
+      dup2
+      dup2
+      add
+        /* "--CODEGEN--":84:102   */
+      mload
+        /* "--CODEGEN--":71:82   */
+      dup4
+      dup3
+      add
+        /* "--CODEGEN--":64:103   */
+      mstore
+        /* "--CODEGEN--":52:54   */
+      0x20
+        /* "--CODEGEN--":45:55   */
+      add
+        /* "--CODEGEN--":8:108   */
+      jump(tag_16)
+    tag_17:
+        /* "--CODEGEN--":12:26   */
+      pop
+        /* "ArichToken.sol":262:306  mapping (address => Account) public walletOf */
+      pop
+      pop
+      pop
+      swap1
+      pop
+      swap1
+      dup2
+      add
+      swap1
+      0x1f
+      and
+      dup1
+      iszero
+      tag_19
+      jumpi
+      dup1
+      dup3
+      sub
+      dup1
+      mload
+      0x1
+      dup4
+      0x20
+      sub
+      0x100
+      exp
+      sub
+      not
+      and
+      dup2
+      mstore
+      0x20
+      add
+      swap2
+      pop
+    tag_19:
+      pop
+      dup4
+      dup2
+      sub
+      dup3
+      mstore
+      dup5
+      mload
+      dup2
+      mstore
+      dup5
+      mload
+      0x20
+      swap2
+      dup3
+      add
+      swap2
+      dup7
+      add
+      swap1
+      dup1
+      dup4
+      dup4
+        /* "--CODEGEN--":23:24   */
+      0x0
+        /* "--CODEGEN--":8:108   */
+    tag_20:
+        /* "--CODEGEN--":33:36   */
+      dup4
+        /* "--CODEGEN--":30:31   */
+      dup2
+        /* "--CODEGEN--":27:37   */
+      lt
+        /* "--CODEGEN--":8:108   */
+      iszero
+      tag_21
+      jumpi
+        /* "--CODEGEN--":90:101   */
+      dup2
+      dup2
+      add
+        /* "--CODEGEN--":84:102   */
+      mload
+        /* "--CODEGEN--":71:82   */
+      dup4
+      dup3
+      add
+        /* "--CODEGEN--":64:103   */
+      mstore
+        /* "--CODEGEN--":52:54   */
+      0x20
+        /* "--CODEGEN--":45:55   */
+      add
+        /* "--CODEGEN--":8:108   */
+      jump(tag_20)
+    tag_21:
+        /* "--CODEGEN--":12:26   */
+      pop
+        /* "ArichToken.sol":262:306  mapping (address => Account) public walletOf */
+      pop
+      pop
+      pop
+      swap1
+      pop
+      swap1
+      dup2
+      add
+      swap1
+      0x1f
+      and
+      dup1
+      iszero
+      tag_23
+      jumpi
+      dup1
+      dup3
+      sub
+      dup1
+      mload
+      0x1
+      dup4
+      0x20
+      sub
+      0x100
+      exp
+      sub
+      not
+      and
+      dup2
+      mstore
+      0x20
+      add
+      swap2
+      pop
+    tag_23:
+      pop
+      swap8
+      pop
+      pop
+      pop
+      pop
+      pop
+      pop
+      pop
+      pop
+      mload(0x40)
+      dup1
+      swap2
+      sub
+      swap1
+      return
+        /* "ArichToken.sol":4869:4934  function kill() { if (msg.sender == owner) selfdestruct(owner); } */
+    tag_3:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_24
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_24:
+        /* "ArichToken.sol":4869:4934  function kill() { if (msg.sender == owner) selfdestruct(owner); } */
+      pop
+      tag_25
+      jump(tag_26)
+    tag_25:
+      stop
+        /* "ArichToken.sol":352:397  mapping (address => uint256) public balanceOf */
+    tag_4:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_27
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_27:
+      pop
+        /* "ArichToken.sol":352:397  mapping (address => uint256) public balanceOf */
+      tag_28
+      and(calldataload(0x4), sub(exp(0x2, 0xa0), 0x1))
+      jump(tag_29)
+    tag_28:
+      0x40
+      dup1
+      mload
+      swap2
+      dup3
+      mstore
+      mload
+      swap1
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      return
+        /* "ArichToken.sol":3850:4297  function burnAccount(address _to, string _reason) public returns(bool success) {... */
+    tag_5:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_30
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_30:
+      pop
+        /* "ArichToken.sol":3850:4297  function burnAccount(address _to, string _reason) public returns(bool success) {... */
+      0x40
+      dup1
+      mload
+      0x20
+      0x4
+      0x24
+      dup1
+      calldataload
+      dup3
+      dup2
+      add
+      calldataload
+      0x1f
+      dup2
+      add
+      dup6
+      swap1
+      div
+      dup6
+      mul
+      dup7
+      add
+      dup6
+      add
+      swap1
+      swap7
+      mstore
+      dup6
+      dup6
+      mstore
+      tag_31
+      swap6
+      dup4
+      calldataload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+      swap6
+      calldatasize
+      swap6
+      0x44
+      swap5
+      swap2
+      swap4
+      swap1
+      swap2
+      add
+      swap2
+      swap1
+      dup2
+      swap1
+      dup5
+      add
+      dup4
+      dup3
+      dup1
+      dup3
+      dup5
+      calldatacopy
+      pop
+      swap5
+      swap8
+      pop
+      tag_32
+      swap7
+      pop
+      pop
+      pop
+      pop
+      pop
+      pop
+      pop
+      jump
+    tag_31:
+      0x40
+      dup1
+      mload
+      swap2
+      iszero
+      iszero
+      dup3
+      mstore
+      mload
+      swap1
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      return
+        /* "ArichToken.sol":3467:3818  function unfreezeAccount(address _to) public returns(bool success) {... */
+    tag_6:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_33
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_33:
+      pop
+        /* "ArichToken.sol":3467:3818  function unfreezeAccount(address _to) public returns(bool success) {... */
+      tag_31
+      and(calldataload(0x4), sub(exp(0x2, 0xa0), 0x1))
+      jump(tag_35)
+        /* "ArichToken.sol":1642:2437  function transfer(address _to, uint256 _value) public returns(bool success) {... */
+    tag_7:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_36
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_36:
+      pop
+        /* "ArichToken.sol":1642:2437  function transfer(address _to, uint256 _value) public returns(bool success) {... */
+      tag_31
+      and(calldataload(0x4), sub(exp(0x2, 0xa0), 0x1))
+      calldataload(0x24)
+      jump(tag_38)
+        /* "ArichToken.sol":4331:4829  function burnALL(string _reason) public returns(bool success) {... */
+    tag_8:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_39
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_39:
+      pop
+        /* "ArichToken.sol":4331:4829  function burnALL(string _reason) public returns(bool success) {... */
+      0x40
+      dup1
+      mload
+      0x20
+      0x4
+      dup1
+      calldataload
+      dup1
+      dup3
+      add
+      calldataload
+      0x1f
+      dup2
+      add
+      dup5
+      swap1
+      div
+      dup5
+      mul
+      dup6
+      add
+      dup5
+      add
+      swap1
+      swap6
+      mstore
+      dup5
+      dup5
+      mstore
+      tag_31
+      swap5
+      calldatasize
+      swap5
+      swap3
+      swap4
+      0x24
+      swap4
+      swap3
+      dup5
+      add
+      swap2
+      swap1
+      dup2
+      swap1
+      dup5
+      add
+      dup4
+      dup3
+      dup1
+      dup3
+      dup5
+      calldatacopy
+      pop
+      swap5
+      swap8
+      pop
+      tag_41
+      swap7
+      pop
+      pop
+      pop
+      pop
+      pop
+      pop
+      pop
+      jump
+        /* "ArichToken.sol":2739:3016  function removeTokens(uint256 _value) public returns(bool success) {... */
+    tag_9:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_42
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_42:
+      pop
+        /* "ArichToken.sol":2739:3016  function removeTokens(uint256 _value) public returns(bool success) {... */
+      tag_31
+      calldataload(0x4)
+      jump(tag_44)
+        /* "ArichToken.sol":2474:2700  function addTokens(uint256 _value) public returns(bool success) {... */
+    tag_10:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_45
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_45:
+      pop
+        /* "ArichToken.sol":2474:2700  function addTokens(uint256 _value) public returns(bool success) {... */
+      tag_31
+      calldataload(0x4)
+      jump(tag_47)
+        /* "ArichToken.sol":436:469  address[] public created_accounts */
+    tag_11:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_48
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_48:
+      pop
+        /* "ArichToken.sol":436:469  address[] public created_accounts */
+      tag_49
+      calldataload(0x4)
+      jump(tag_50)
+    tag_49:
+      0x40
+      dup1
+      mload
+      sub(exp(0x2, 0xa0), 0x1)
+      swap1
+      swap3
+      and
+      dup3
+      mstore
+      mload
+      swap1
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      return
+        /* "ArichToken.sol":3050:3432  function freezeAccount(address _to) public returns(bool success) {... */
+    tag_12:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_51
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_51:
+      pop
+        /* "ArichToken.sol":3050:3432  function freezeAccount(address _to) public returns(bool success) {... */
+      tag_31
+      and(calldataload(0x4), sub(exp(0x2, 0xa0), 0x1))
+      jump(tag_53)
+        /* "ArichToken.sol":262:306  mapping (address => Account) public walletOf */
+    tag_15:
+      0x1
+      0x20
+      dup2
+      dup2
+      mstore
+      0x0
+      swap3
+      dup4
+      mstore
+      0x40
+      swap3
+      dup4
+      swap1
+      keccak256
+      dup1
+      sload
+      dup2
+      dup5
+      add
+      sload
+      0x2
+      dup1
+      dup5
+      add
+      dup1
+      sload
+      dup9
+      mload
+      0x100
+      swap9
+      dup3
+      and
+      iszero
+      dup10
+      mul
+      not(0x0)
+      add
+      swap1
+      swap2
+      and
+      swap3
+      swap1
+      swap3
+      div
+      0x1f
+      dup2
+      add
+      dup8
+      swap1
+      div
+      dup8
+      mul
+      dup4
+      add
+      dup8
+      add
+      swap1
+      swap9
+      mstore
+      dup8
+      dup3
+      mstore
+      swap3
+      swap7
+      0xff
+      dup1
+      dup5
+      and
+      swap8
+      swap1
+      swap4
+      div
+      swap1
+      swap3
+      and
+      swap5
+      swap1
+      swap3
+      swap2
+      swap1
+      dup4
+      add
+      dup3
+      dup3
+      dup1
+      iszero
+      tag_54
+      jumpi
+      dup1
+      0x1f
+      lt
+      tag_55
+      jumpi
+      0x100
+      dup1
+      dup4
+      sload
+      div
+      mul
+      dup4
+      mstore
+      swap2
+      0x20
+      add
+      swap2
+      jump(tag_54)
+    tag_55:
+      dup3
+      add
+      swap2
+      swap1
+      0x0
+      mstore
+      keccak256(0x0, 0x20)
+      swap1
+    tag_56:
+      dup2
+      sload
+      dup2
+      mstore
+      swap1
+      0x1
+      add
+      swap1
+      0x20
+      add
+      dup1
+      dup4
+      gt
+      tag_56
+      jumpi
+      dup3
+      swap1
+      sub
+      0x1f
+      and
+      dup3
+      add
+      swap2
+    tag_54:
+      pop
+      pop
+      pop
+      pop
+      0x3
+      dup4
+      add
+      dup1
+      sload
+      0x40
+      dup1
+      mload
+      0x20
+      0x2
+      0x1
+      dup6
+      and
+      iszero
+      0x100
+      mul
+      not(0x0)
+      add
+      swap1
+      swap5
+      and
+      swap4
+      swap1
+      swap4
+      div
+      0x1f
+      dup2
+      add
+      dup5
+      swap1
+      div
+      dup5
+      mul
+      dup3
+      add
+      dup5
+      add
+      swap1
+      swap3
+      mstore
+      dup2
+      dup2
+      mstore
+      swap5
+      swap6
+      swap5
+      swap4
+      pop
+      swap1
+      dup4
+      add
+      dup3
+      dup3
+      dup1
+      iszero
+      tag_57
+      jumpi
+      dup1
+      0x1f
+      lt
+      tag_58
+      jumpi
+      0x100
+      dup1
+      dup4
+      sload
+      div
+      mul
+      dup4
+      mstore
+      swap2
+      0x20
+      add
+      swap2
+      jump(tag_57)
+    tag_58:
+      dup3
+      add
+      swap2
+      swap1
+      0x0
+      mstore
+      keccak256(0x0, 0x20)
+      swap1
+    tag_59:
+      dup2
+      sload
+      dup2
+      mstore
+      swap1
+      0x1
+      add
+      swap1
+      0x20
+      add
+      dup1
+      dup4
+      gt
+      tag_59
+      jumpi
+      dup3
+      swap1
+      sub
+      0x1f
+      and
+      dup3
+      add
+      swap2
+    tag_57:
+      pop
+      pop
+      pop
+      pop
+      pop
+      swap1
+      pop
+      dup6
+      jump	// out
+        /* "ArichToken.sol":4869:4934  function kill() { if (msg.sender == owner) selfdestruct(owner); } */
+    tag_26:
+        /* "ArichToken.sol":4905:4910  owner */
+      and(sub(exp(0x2, 0xa0), 0x1), sload(0x0))
+        /* "ArichToken.sol":4891:4901  msg.sender */
+      caller
+        /* "ArichToken.sol":4891:4910  msg.sender == owner */
+      eq
+        /* "ArichToken.sol":4887:4931  if (msg.sender == owner) selfdestruct(owner) */
+      iszero
+      tag_61
+      jumpi
+        /* "ArichToken.sol":4925:4930  owner */
+      and(sub(exp(0x2, 0xa0), 0x1), sload(0x0))
+        /* "ArichToken.sol":4912:4931  selfdestruct(owner) */
+      selfdestruct
+        /* "ArichToken.sol":4887:4931  if (msg.sender == owner) selfdestruct(owner) */
+    tag_61:
+        /* "ArichToken.sol":4869:4934  function kill() { if (msg.sender == owner) selfdestruct(owner); } */
+      jump	// out
+        /* "ArichToken.sol":352:397  mapping (address => uint256) public balanceOf */
+    tag_29:
+      mstore(0x20, 0x2)
+      0x0
+      swap1
+      dup2
+      mstore
+      0x40
+      swap1
+      keccak256
+      sload
+      dup2
+      jump	// out
+        /* "ArichToken.sol":3850:4297  function burnAccount(address _to, string _reason) public returns(bool success) {... */
+    tag_32:
+        /* "ArichToken.sol":3915:3927  bool success */
+      0x0
+        /* "ArichToken.sol":3961:3966  owner */
+      dup1
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":3947:3957  msg.sender */
+      caller
+        /* "ArichToken.sol":3947:3966  msg.sender == owner */
+      eq
+        /* "ArichToken.sol":3939:3967  require(msg.sender == owner) */
+      tag_63
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_63:
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":3986:3999  walletOf[_to] */
+      dup4
+      and
+      0x0
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":3986:3994  walletOf */
+      0x1
+        /* "ArichToken.sol":3986:3999  walletOf[_to] */
+      0x20
+      dup2
+      swap1
+      mstore
+      0x40
+      swap1
+      swap2
+      keccak256
+        /* "ArichToken.sol":3986:4004  walletOf[_to].burn */
+      add
+      sload
+      0x100
+      swap1
+      div
+      0xff
+      and
+        /* "ArichToken.sol":3985:4004  !walletOf[_to].burn */
+      iszero
+        /* "ArichToken.sol":3977:4005  require(!walletOf[_to].burn) */
+      tag_64
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_64:
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":4023:4037  balanceOf[_to] */
+      dup4
+      and
+        /* "ArichToken.sol":4040:4041  0 */
+      0x0
+        /* "ArichToken.sol":4023:4037  balanceOf[_to] */
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":4023:4032  balanceOf */
+      0x2
+        /* "ArichToken.sol":4023:4037  balanceOf[_to] */
+      0x20
+      mstore
+      0x40
+      dup2
+      keccak256
+      sload
+        /* "ArichToken.sol":4023:4041  balanceOf[_to] > 0 */
+      gt
+        /* "ArichToken.sol":4015:4042  require(balanceOf[_to] > 0) */
+      tag_65
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_65:
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":4052:4065  walletOf[_to] */
+      dup4
+      and
+      0x0
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":4073:4077  true */
+      0x1
+        /* "ArichToken.sol":4052:4065  walletOf[_to] */
+      0x20
+      dup2
+      dup2
+      mstore
+      0x40
+      dup1
+      dup5
+      keccak256
+        /* "ArichToken.sol":4052:4070  walletOf[_to].burn */
+      dup1
+      dup5
+      add
+        /* "ArichToken.sol":4052:4077  walletOf[_to].burn = true */
+      dup1
+      sload
+      not(0xff00)
+      and
+      0x100
+      or
+      swap1
+      sstore
+        /* "ArichToken.sol":4116:4125  balanceOf */
+      0x2
+        /* "ArichToken.sol":4116:4130  balanceOf[_to] */
+      dup4
+      mstore
+      swap4
+      keccak256
+      sload
+        /* "ArichToken.sol":4087:4100  walletOf[_to] */
+      swap2
+      dup2
+      mstore
+        /* "ArichToken.sol":4087:4130  walletOf[_to].last_balance = balanceOf[_to] */
+      swap1
+      dup3
+      sstore
+        /* "ArichToken.sol":4140:4172  walletOf[_to].b_reason = _reason */
+      dup4
+      mload
+      tag_66
+      swap3
+        /* "ArichToken.sol":4140:4162  walletOf[_to].b_reason */
+      0x3
+      add
+      swap2
+        /* "ArichToken.sol":4140:4172  walletOf[_to].b_reason = _reason */
+      dup6
+      add
+      swap1
+      jump	// in(tag_67)
+    tag_66:
+      pop
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":4202:4216  balanceOf[_to] */
+      dup1
+      dup5
+      and
+      0x0
+      dup2
+      dup2
+      mstore
+        /* "ArichToken.sol":4202:4211  balanceOf */
+      0x2
+        /* "ArichToken.sol":4202:4216  balanceOf[_to] */
+      0x20
+      mstore
+      0x40
+      dup1
+      dup3
+      keccak256
+      dup1
+      sload
+        /* "ArichToken.sol":4192:4197  owner */
+      dup4
+      sload
+      swap1
+      swap6
+      and
+        /* "ArichToken.sol":4182:4198  balanceOf[owner] */
+      dup4
+      mstore
+      dup2
+      dup4
+      keccak256
+        /* "ArichToken.sol":4182:4216  balanceOf[owner] += balanceOf[_to] */
+      dup1
+      sload
+      swap1
+      swap6
+      add
+      swap1
+      swap5
+      sstore
+        /* "ArichToken.sol":4226:4240  balanceOf[_to] */
+      dup3
+      dup3
+      mstore
+        /* "ArichToken.sol":4226:4244  balanceOf[_to] = 0 */
+      swap3
+      dup2
+      swap1
+      sstore
+        /* "ArichToken.sol":4259:4269  Burnt(_to) */
+      swap2
+      mload
+        /* "ArichToken.sol":4202:4216  balanceOf[_to] */
+      swap1
+      swap2
+        /* "ArichToken.sol":4259:4269  Burnt(_to) */
+      0xce6b15623afb84538dc319bdb30ea0a2cd87994e4969451d2402323afc5b03e
+      swap2
+      log2
+      pop
+        /* "ArichToken.sol":4286:4290  true */
+      0x1
+        /* "ArichToken.sol":3850:4297  function burnAccount(address _to, string _reason) public returns(bool success) {... */
+      swap3
+      swap2
+      pop
+      pop
+      jump	// out
+        /* "ArichToken.sol":3467:3818  function unfreezeAccount(address _to) public returns(bool success) {... */
+    tag_35:
+        /* "ArichToken.sol":3520:3532  bool success */
+      0x0
+        /* "ArichToken.sol":3566:3571  owner */
+      dup1
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":3552:3562  msg.sender */
+      caller
+        /* "ArichToken.sol":3552:3571  msg.sender == owner */
+      eq
+        /* "ArichToken.sol":3544:3572  require(msg.sender == owner) */
+      tag_69
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_69:
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":3590:3603  walletOf[_to] */
+      dup3
+      and
+      0x0
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":3590:3598  walletOf */
+      0x1
+        /* "ArichToken.sol":3590:3603  walletOf[_to] */
+      0x20
+      dup2
+      swap1
+      mstore
+      0x40
+      swap1
+      swap2
+      keccak256
+        /* "ArichToken.sol":3590:3610  walletOf[_to].freeze */
+      add
+      sload
+      0xff
+      and
+        /* "ArichToken.sol":3582:3611  require(walletOf[_to].freeze) */
+      iszero
+      iszero
+      tag_70
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_70:
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":3621:3634  walletOf[_to] */
+      dup3
+      and
+        /* "ArichToken.sol":3644:3649  false */
+      0x0
+        /* "ArichToken.sol":3621:3634  walletOf[_to] */
+      dup2
+      dup2
+      mstore
+        /* "ArichToken.sol":3621:3629  walletOf */
+      0x1
+        /* "ArichToken.sol":3621:3634  walletOf[_to] */
+      0x20
+      dup2
+      dup2
+      mstore
+      0x40
+      dup1
+      dup5
+      keccak256
+        /* "ArichToken.sol":3621:3641  walletOf[_to].freeze */
+      dup1
+      dup5
+      add
+        /* "ArichToken.sol":3621:3649  walletOf[_to].freeze = false */
+      dup1
+      sload
+      not(0xff)
+      and
+      swap1
+      sstore
+        /* "ArichToken.sol":3676:3702  walletOf[_to].last_balance */
+      dup1
+      sload
+        /* "ArichToken.sol":3659:3668  balanceOf */
+      0x2
+        /* "ArichToken.sol":3659:3673  balanceOf[_to] */
+      dup1
+      dup6
+      mstore
+      dup4
+      dup8
+      keccak256
+        /* "ArichToken.sol":3659:3702  balanceOf[_to] = walletOf[_to].last_balance */
+      swap2
+      swap1
+      swap2
+      sstore
+        /* "ArichToken.sol":3712:3761  walletOf[_to].f_reason = "Unfreezed by the owner" */
+      dup3
+      mload
+      dup1
+      dup5
+      add
+      swap1
+      swap4
+      mstore
+      0x16
+      dup4
+      mstore
+      0x556e667265657a656420627920746865206f776e657200000000000000000000
+      dup4
+      dup6
+      add
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":3712:3725  walletOf[_to] */
+      swap7
+      swap1
+      swap6
+      mstore
+      swap3
+      swap1
+      swap2
+      mstore
+        /* "ArichToken.sol":3712:3761  walletOf[_to].f_reason = "Unfreezed by the owner" */
+      mload
+      tag_71
+      swap4
+        /* "ArichToken.sol":3712:3734  walletOf[_to].f_reason */
+      swap3
+      swap1
+      swap2
+      add
+      swap2
+        /* "ArichToken.sol":3712:3761  walletOf[_to].f_reason = "Unfreezed by the owner" */
+      swap1
+      jump	// in(tag_67)
+    tag_71:
+      pop
+        /* "ArichToken.sol":3776:3790  Unfreezed(_to) */
+      mload(0x40)
+      sub(exp(0x2, 0xa0), 0x1)
+      dup4
+      and
+      swap1
+      0x4d1fe3cc0f516ce2cfc5e83d52ee28af7f55376b18f58e7081c5fd25d8eeb1df
+      swap1
+      0x0
+      swap1
+      log2
+      pop
+        /* "ArichToken.sol":3807:3811  true */
+      0x1
+        /* "ArichToken.sol":3467:3818  function unfreezeAccount(address _to) public returns(bool success) {... */
+      swap2
+      swap1
+      pop
+      jump	// out
+        /* "ArichToken.sol":1642:2437  function transfer(address _to, uint256 _value) public returns(bool success) {... */
+    tag_38:
+        /* "ArichToken.sol":1767:1777  msg.sender */
+      caller
+        /* "ArichToken.sol":1704:1716  bool success */
+      0x0
+        /* "ArichToken.sol":1758:1778  walletOf[msg.sender] */
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":1758:1766  walletOf */
+      0x1
+        /* "ArichToken.sol":1758:1778  walletOf[msg.sender] */
+      0x20
+      dup2
+      swap1
+      mstore
+      0x40
+      dup3
+      keccak256
+        /* "ArichToken.sol":1758:1785  walletOf[msg.sender].freeze */
+      add
+      sload
+        /* "ArichToken.sol":1704:1716  bool success */
+      dup2
+      swap1
+        /* "ArichToken.sol":1758:1785  walletOf[msg.sender].freeze */
+      0xff
+      and
+        /* "ArichToken.sol":1757:1785  !walletOf[msg.sender].freeze */
+      iszero
+        /* "ArichToken.sol":1749:1786  require(!walletOf[msg.sender].freeze) */
+      tag_73
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_73:
+        /* "ArichToken.sol":1814:1824  msg.sender */
+      caller
+        /* "ArichToken.sol":1805:1825  walletOf[msg.sender] */
+      0x0
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":1805:1813  walletOf */
+      0x1
+        /* "ArichToken.sol":1805:1825  walletOf[msg.sender] */
+      0x20
+      dup2
+      swap1
+      mstore
+      0x40
+      swap1
+      swap2
+      keccak256
+        /* "ArichToken.sol":1805:1830  walletOf[msg.sender].burn */
+      add
+      sload
+      0x100
+      swap1
+      div
+      0xff
+      and
+        /* "ArichToken.sol":1804:1830  !walletOf[msg.sender].burn */
+      iszero
+        /* "ArichToken.sol":1796:1831  require(!walletOf[msg.sender].burn) */
+      tag_74
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_74:
+        /* "ArichToken.sol":1855:1865  msg.sender */
+      caller
+        /* "ArichToken.sol":1845:1866  balanceOf[msg.sender] */
+      0x0
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":1845:1854  balanceOf */
+      0x2
+        /* "ArichToken.sol":1845:1866  balanceOf[msg.sender] */
+      0x20
+      mstore
+      0x40
+      swap1
+      keccak256
+      sload
+        /* "ArichToken.sol":1845:1875  balanceOf[msg.sender] > _value */
+      dup4
+      lt
+        /* "ArichToken.sol":1841:2408  if (balanceOf[msg.sender] > _value) {... */
+      iszero
+      tag_75
+      jumpi
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":1895:1909  balanceOf[_to] */
+      dup5
+      and
+      0x0
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":1895:1904  balanceOf */
+      0x2
+        /* "ArichToken.sol":1895:1909  balanceOf[_to] */
+      0x20
+      mstore
+      0x40
+      swap1
+      keccak256
+      sload
+        /* "ArichToken.sol":1895:1914  balanceOf[_to] == 0 */
+      iszero
+        /* "ArichToken.sol":1891:1958  if (balanceOf[_to] == 0)... */
+      iszero
+      tag_76
+      jumpi
+        /* "ArichToken.sol":1932:1948  created_accounts */
+      0x3
+        /* "--CODEGEN--":27:37   */
+      dup1
+      sload
+        /* "--CODEGEN--":39:40   */
+      0x1
+        /* "--CODEGEN--":23:41   */
+      dup2
+      add
+        /* "--CODEGEN--":45:68   */
+      dup3
+      sstore
+      0x0
+        /* "ArichToken.sol":1932:1958  created_accounts.push(_to) */
+      swap2
+      swap1
+      swap2
+      mstore
+      0xc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b
+      add
+      dup1
+      sload
+      not(0xffffffffffffffffffffffffffffffffffffffff)
+      and
+      sub(exp(0x2, 0xa0), 0x1)
+      dup7
+      and
+      or
+      swap1
+      sstore
+        /* "ArichToken.sol":1891:1958  if (balanceOf[_to] == 0)... */
+    tag_76:
+      pop
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":1972:1986  balanceOf[_to] */
+      dup4
+      and
+      0x0
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":1972:1981  balanceOf */
+      0x2
+        /* "ArichToken.sol":1972:1986  balanceOf[_to] */
+      0x20
+      mstore
+      0x40
+      dup1
+      dup3
+      keccak256
+        /* "ArichToken.sol":1972:1996  balanceOf[_to] += _value */
+      dup1
+      sload
+      dup6
+      add
+      swap1
+      sstore
+        /* "ArichToken.sol":2020:2030  msg.sender */
+      caller
+        /* "ArichToken.sol":2010:2031  balanceOf[msg.sender] */
+      dup3
+      mstore
+      swap1
+      keccak256
+        /* "ArichToken.sol":2010:2041  balanceOf[msg.sender] -= _value */
+      dup1
+      sload
+      dup4
+      swap1
+      sub
+      swap1
+      sstore
+      0x1
+        /* "ArichToken.sol":1841:2408  if (balanceOf[msg.sender] > _value) {... */
+      jump(tag_78)
+    tag_75:
+        /* "ArichToken.sol":2191:2201  msg.sender */
+      caller
+        /* "ArichToken.sol":2182:2202  walletOf[msg.sender] */
+      0x0
+      dup2
+      dup2
+      mstore
+        /* "ArichToken.sol":2212:2216  true */
+      0x1
+        /* "ArichToken.sol":2182:2202  walletOf[msg.sender] */
+      0x20
+      dup2
+      dup2
+      mstore
+      0x40
+      dup1
+      dup5
+      keccak256
+        /* "ArichToken.sol":2182:2209  walletOf[msg.sender].freeze */
+      dup1
+      dup5
+      add
+        /* "ArichToken.sol":2182:2216  walletOf[msg.sender].freeze = true */
+      dup1
+      sload
+      not(0xff)
+      and
+      dup6
+      or
+      swap1
+      sstore
+        /* "ArichToken.sol":2266:2275  balanceOf */
+      0x2
+        /* "ArichToken.sol":2266:2287  balanceOf[msg.sender] */
+      dup1
+      dup5
+      mstore
+      dup3
+      dup7
+      keccak256
+      sload
+        /* "ArichToken.sol":2230:2287  walletOf[msg.sender].last_balance = balanceOf[msg.sender] */
+      dup3
+      sstore
+        /* "ArichToken.sol":2301:2369  walletOf[msg.sender].f_reason = "Transfer more than funds available" */
+      dup3
+      mload
+      0x60
+      dup2
+      add
+      dup5
+      mstore
+      0x22
+      dup2
+      mstore
+      0x5472616e73666572206d6f7265207468616e2066756e647320617661696c6162
+      dup2
+      dup7
+      add
+      swap1
+      dup2
+      mstore
+      0x6c65000000000000000000000000000000000000000000000000000000000000
+      swap5
+      dup3
+      add
+      swap5
+      swap1
+      swap5
+      mstore
+        /* "ArichToken.sol":2301:2321  walletOf[msg.sender] */
+      swap7
+      swap1
+      swap6
+      mstore
+      swap3
+      swap1
+      swap2
+      mstore
+        /* "ArichToken.sol":2301:2369  walletOf[msg.sender].f_reason = "Transfer more than funds available" */
+      swap3
+      mload
+      tag_79
+      swap4
+        /* "ArichToken.sol":2301:2330  walletOf[msg.sender].f_reason */
+      swap3
+      swap1
+      swap2
+      add
+      swap2
+        /* "ArichToken.sol":2301:2369  walletOf[msg.sender].f_reason = "Transfer more than funds available" */
+      swap1
+      jump	// in(tag_67)
+    tag_79:
+      pop
+        /* "ArichToken.sol":2392:2397  false */
+      0x0
+        /* "ArichToken.sol":2383:2397  retval = false */
+      swap1
+      pop
+        /* "ArichToken.sol":1841:2408  if (balanceOf[msg.sender] > _value) {... */
+    tag_78:
+        /* "ArichToken.sol":2424:2430  retval */
+      swap4
+        /* "ArichToken.sol":1642:2437  function transfer(address _to, uint256 _value) public returns(bool success) {... */
+      swap3
+      pop
+      pop
+      pop
+      jump	// out
+        /* "ArichToken.sol":4331:4829  function burnALL(string _reason) public returns(bool success) {... */
+    tag_41:
+        /* "ArichToken.sol":4379:4391  bool success */
+      0x0
+        /* "ArichToken.sol":4425:4430  owner */
+      dup1
+      sload
+        /* "ArichToken.sol":4379:4391  bool success */
+      dup2
+      swap1
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":4425:4430  owner */
+      and
+        /* "ArichToken.sol":4411:4421  msg.sender */
+      caller
+        /* "ArichToken.sol":4411:4430  msg.sender == owner */
+      eq
+        /* "ArichToken.sol":4403:4431  require(msg.sender == owner) */
+      tag_81
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_81:
+      pop
+        /* "ArichToken.sol":4455:4456  0 */
+      0x0
+        /* "ArichToken.sol":4441:4802  for (uint i = 0; i < created_accounts.length; i++) {... */
+    tag_82:
+        /* "ArichToken.sol":4462:4478  created_accounts */
+      0x3
+        /* "ArichToken.sol":4462:4485  created_accounts.length */
+      sload
+        /* "ArichToken.sol":4458:4485  i < created_accounts.length */
+      dup2
+      lt
+        /* "ArichToken.sol":4441:4802  for (uint i = 0; i < created_accounts.length; i++) {... */
+      iszero
+      tag_83
+      jumpi
+        /* "ArichToken.sol":4543:4547  true */
+      0x1
+        /* "ArichToken.sol":4506:4514  walletOf */
+      dup1
+        /* "ArichToken.sol":4506:4535  walletOf[created_accounts[i]] */
+      0x0
+        /* "ArichToken.sol":4515:4531  created_accounts */
+      0x3
+        /* "ArichToken.sol":4532:4533  i */
+      dup5
+        /* "ArichToken.sol":4515:4534  created_accounts[i] */
+      dup2
+      sload
+      dup2
+      lt
+      iszero
+      iszero
+      tag_85
+      jumpi
+      invalid
+    tag_85:
+      0x0
+      swap2
+      dup3
+      mstore
+      0x20
+      dup1
+      dup4
+      keccak256
+      swap1
+      swap2
+      add
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":4506:4535  walletOf[created_accounts[i]] */
+      dup4
+      mstore
+      dup3
+      add
+      swap3
+      swap1
+      swap3
+      mstore
+      0x40
+      add
+      dup2
+      keccak256
+        /* "ArichToken.sol":4515:4534  created_accounts[i] */
+      0x1
+        /* "ArichToken.sol":4506:4540  walletOf[created_accounts[i]].burn */
+      add
+        /* "ArichToken.sol":4506:4547  walletOf[created_accounts[i]].burn = true */
+      dup1
+      sload
+      swap3
+      iszero
+      iszero
+        /* "ArichToken.sol":4515:4534  created_accounts[i] */
+      0x100
+        /* "ArichToken.sol":4506:4547  walletOf[created_accounts[i]].burn = true */
+      mul
+      not(0xff00)
+      swap1
+      swap4
+      and
+      swap3
+      swap1
+      swap3
+      or
+      swap1
+      swap2
+      sstore
+        /* "ArichToken.sol":4616:4632  created_accounts */
+      0x3
+        /* "ArichToken.sol":4616:4635  created_accounts[i] */
+      dup1
+      sload
+        /* "ArichToken.sol":4606:4615  balanceOf */
+      0x2
+      swap3
+        /* "ArichToken.sol":4515:4534  created_accounts[i] */
+      swap2
+        /* "ArichToken.sol":4616:4632  created_accounts */
+      swap1
+        /* "ArichToken.sol":4633:4634  i */
+      dup5
+      swap1
+        /* "ArichToken.sol":4616:4635  created_accounts[i] */
+      dup2
+      lt
+      tag_87
+      jumpi
+      invalid
+    tag_87:
+      0x0
+      swap2
+      dup3
+      mstore
+      0x20
+      dup1
+      dup4
+      keccak256
+      swap1
+      swap2
+      add
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":4606:4636  balanceOf[created_accounts[i]] */
+      dup4
+      mstore
+      dup3
+      add
+      swap3
+      swap1
+      swap3
+      mstore
+      0x40
+      add
+      dup2
+      keccak256
+      sload
+        /* "ArichToken.sol":4570:4586  created_accounts */
+      0x3
+        /* "ArichToken.sol":4570:4589  created_accounts[i] */
+      dup1
+      sload
+        /* "ArichToken.sol":4606:4636  balanceOf[created_accounts[i]] */
+      swap2
+      swap3
+        /* "ArichToken.sol":4616:4635  created_accounts[i] */
+      0x1
+      swap3
+      swap1
+      swap2
+        /* "ArichToken.sol":4570:4586  created_accounts */
+      swap1
+        /* "ArichToken.sol":4587:4588  i */
+      dup6
+      swap1
+        /* "ArichToken.sol":4570:4589  created_accounts[i] */
+      dup2
+      lt
+      tag_89
+      jumpi
+      invalid
+    tag_89:
+      0x0
+      swap2
+      dup3
+      mstore
+      0x20
+      dup1
+      dup4
+      keccak256
+      swap1
+      swap2
+      add
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":4561:4590  walletOf[created_accounts[i]] */
+      dup4
+      mstore
+      dup3
+      add
+      swap3
+      swap1
+      swap3
+      mstore
+      0x40
+      add
+      dup2
+      keccak256
+        /* "ArichToken.sol":4561:4636  walletOf[created_accounts[i]].last_balance = balanceOf[created_accounts[i]] */
+      swap2
+      swap1
+      swap2
+      sstore
+        /* "ArichToken.sol":4659:4675  created_accounts */
+      0x3
+        /* "ArichToken.sol":4659:4678  created_accounts[i] */
+      dup1
+      sload
+        /* "ArichToken.sol":4691:4698  _reason */
+      dup6
+      swap3
+        /* "ArichToken.sol":4570:4589  created_accounts[i] */
+      0x1
+      swap3
+      swap1
+      swap2
+        /* "ArichToken.sol":4676:4677  i */
+      dup6
+      swap1
+        /* "ArichToken.sol":4659:4678  created_accounts[i] */
+      dup2
+      lt
+      tag_91
+      jumpi
+      invalid
+    tag_91:
+      0x0
+      swap2
+      dup3
+      mstore
+      0x20
+      dup1
+      dup4
+      keccak256
+      swap1
+      swap2
+      add
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":4650:4679  walletOf[created_accounts[i]] */
+      dup4
+      mstore
+      dup3
+      dup2
+      add
+      swap4
+      swap1
+      swap4
+      mstore
+      0x40
+      swap1
+      swap2
+      add
+      swap1
+      keccak256
+        /* "ArichToken.sol":4650:4698  walletOf[created_accounts[i]].b_reason = _reason */
+      dup3
+      mload
+      tag_93
+      swap4
+        /* "ArichToken.sol":4650:4688  walletOf[created_accounts[i]].b_reason */
+      0x3
+      swap1
+      swap3
+      add
+      swap3
+        /* "ArichToken.sol":4650:4698  walletOf[created_accounts[i]].b_reason = _reason */
+      swap2
+      swap1
+      swap2
+      add
+      swap1
+      jump	// in(tag_67)
+    tag_93:
+      pop
+        /* "ArichToken.sol":4745:4746  0 */
+      0x0
+        /* "ArichToken.sol":4712:4721  balanceOf */
+      0x2
+        /* "ArichToken.sol":4712:4742  balanceOf[created_accounts[i]] */
+      0x0
+        /* "ArichToken.sol":4722:4738  created_accounts */
+      0x3
+        /* "ArichToken.sol":4739:4740  i */
+      dup5
+        /* "ArichToken.sol":4722:4741  created_accounts[i] */
+      dup2
+      sload
+      dup2
+      lt
+      iszero
+      iszero
+      tag_94
+      jumpi
+      invalid
+    tag_94:
+      0x0
+      swap2
+      dup3
+      mstore
+      0x20
+      dup1
+      dup4
+      keccak256
+      swap1
+      swap2
+      add
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":4712:4742  balanceOf[created_accounts[i]] */
+      dup4
+      mstore
+      dup3
+      add
+      swap3
+      swap1
+      swap3
+      mstore
+      0x40
+      add
+      swap1
+      keccak256
+        /* "ArichToken.sol":4712:4746  balanceOf[created_accounts[i]] = 0 */
+      sstore
+        /* "ArichToken.sol":4771:4787  created_accounts */
+      0x3
+        /* "ArichToken.sol":4771:4790  created_accounts[i] */
+      dup1
+      sload
+        /* "ArichToken.sol":4788:4789  i */
+      dup3
+      swap1
+        /* "ArichToken.sol":4771:4790  created_accounts[i] */
+      dup2
+      lt
+      tag_96
+      jumpi
+      invalid
+    tag_96:
+      0x0
+      swap2
+      dup3
+      mstore
+      0x20
+      dup3
+      keccak256
+      add
+      sload
+        /* "ArichToken.sol":4765:4791  Burnt(created_accounts[i]) */
+      mload(0x40)
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":4771:4790  created_accounts[i] */
+      swap1
+      swap2
+      and
+      swap2
+        /* "ArichToken.sol":4765:4791  Burnt(created_accounts[i]) */
+      0xce6b15623afb84538dc319bdb30ea0a2cd87994e4969451d2402323afc5b03e
+      swap2
+      log2
+        /* "ArichToken.sol":4487:4490  i++ */
+      0x1
+      add
+        /* "ArichToken.sol":4441:4802  for (uint i = 0; i < created_accounts.length; i++) {... */
+      jump(tag_82)
+    tag_83:
+      pop
+        /* "ArichToken.sol":4818:4822  true */
+      0x1
+      swap3
+        /* "ArichToken.sol":4331:4829  function burnALL(string _reason) public returns(bool success) {... */
+      swap2
+      pop
+      pop
+      jump	// out
+        /* "ArichToken.sol":2739:3016  function removeTokens(uint256 _value) public returns(bool success) {... */
+    tag_44:
+        /* "ArichToken.sol":2792:2804  bool success */
+      0x0
+        /* "ArichToken.sol":2838:2843  owner */
+      dup1
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":2824:2834  msg.sender */
+      caller
+        /* "ArichToken.sol":2824:2843  msg.sender == owner */
+      eq
+        /* "ArichToken.sol":2816:2844  require(msg.sender == owner) */
+      tag_99
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_99:
+        /* "ArichToken.sol":2890:2891  0 */
+      0x0
+        /* "ArichToken.sol":2872:2877  owner */
+      dup1
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":2862:2878  balanceOf[owner] */
+      dup2
+      mstore
+        /* "ArichToken.sol":2862:2871  balanceOf */
+      0x2
+        /* "ArichToken.sol":2862:2878  balanceOf[owner] */
+      0x20
+      mstore
+      0x40
+      dup2
+      keccak256
+      sload
+        /* "ArichToken.sol":2862:2887  balanceOf[owner] - _value */
+      dup4
+      swap1
+      sub
+        /* "ArichToken.sol":2862:2891  balanceOf[owner] - _value > 0 */
+      gt
+        /* "ArichToken.sol":2854:2892  require(balanceOf[owner] - _value > 0) */
+      tag_100
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_100:
+        /* "ArichToken.sol":2919:2922  100 */
+      0x64
+        /* "ArichToken.sol":2910:2922  _value < 100 */
+      dup3
+      lt
+        /* "ArichToken.sol":2902:2923  require(_value < 100) */
+      tag_101
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_101:
+      pop
+        /* "ArichToken.sol":2962:2978  balanceOf[owner] */
+      0x0
+        /* "ArichToken.sol":2972:2977  owner */
+      dup1
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":2962:2978  balanceOf[owner] */
+      dup2
+      mstore
+        /* "ArichToken.sol":2962:2971  balanceOf */
+      0x2
+        /* "ArichToken.sol":2962:2978  balanceOf[owner] */
+      0x20
+      mstore
+      0x40
+      swap1
+      keccak256
+        /* "ArichToken.sol":2962:2988  balanceOf[owner] -= _value */
+      dup1
+      sload
+      swap2
+      swap1
+      swap2
+      sub
+      swap1
+      sstore
+      0x1
+      swap1
+        /* "ArichToken.sol":2739:3016  function removeTokens(uint256 _value) public returns(bool success) {... */
+      jump	// out
+        /* "ArichToken.sol":2474:2700  function addTokens(uint256 _value) public returns(bool success) {... */
+    tag_47:
+        /* "ArichToken.sol":2524:2536  bool success */
+      0x0
+        /* "ArichToken.sol":2570:2575  owner */
+      dup1
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":2556:2566  msg.sender */
+      caller
+        /* "ArichToken.sol":2556:2575  msg.sender == owner */
+      eq
+        /* "ArichToken.sol":2548:2576  require(msg.sender == owner) */
+      tag_103
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_103:
+        /* "ArichToken.sol":2603:2606  100 */
+      0x64
+        /* "ArichToken.sol":2594:2606  _value < 100 */
+      dup3
+      lt
+        /* "ArichToken.sol":2586:2607  require(_value < 100) */
+      tag_104
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_104:
+      pop
+        /* "ArichToken.sol":2646:2662  balanceOf[owner] */
+      0x0
+        /* "ArichToken.sol":2656:2661  owner */
+      dup1
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":2646:2662  balanceOf[owner] */
+      dup2
+      mstore
+        /* "ArichToken.sol":2646:2655  balanceOf */
+      0x2
+        /* "ArichToken.sol":2646:2662  balanceOf[owner] */
+      0x20
+      mstore
+      0x40
+      swap1
+      keccak256
+        /* "ArichToken.sol":2646:2672  balanceOf[owner] += _value */
+      dup1
+      sload
+      dup3
+      add
+      swap1
+      sstore
+        /* "ArichToken.sol":2656:2661  owner */
+      0x1
+        /* "ArichToken.sol":2474:2700  function addTokens(uint256 _value) public returns(bool success) {... */
+      swap2
+      swap1
+      pop
+      jump	// out
+        /* "ArichToken.sol":436:469  address[] public created_accounts */
+    tag_50:
+      0x3
+      dup1
+      sload
+      dup3
+      swap1
+      dup2
+      lt
+      tag_105
+      jumpi
+      invalid
+    tag_105:
+      0x0
+      swap2
+      dup3
+      mstore
+      0x20
+      swap1
+      swap2
+      keccak256
+      add
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+      swap1
+      pop
+      dup2
+      jump	// out
+        /* "ArichToken.sol":3050:3432  function freezeAccount(address _to) public returns(bool success) {... */
+    tag_53:
+        /* "ArichToken.sol":3101:3113  bool success */
+      0x0
+        /* "ArichToken.sol":3147:3152  owner */
+      dup1
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":3133:3143  msg.sender */
+      caller
+        /* "ArichToken.sol":3133:3152  msg.sender == owner */
+      eq
+        /* "ArichToken.sol":3125:3153  require(msg.sender == owner) */
+      tag_108
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_108:
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":3172:3185  walletOf[_to] */
+      dup3
+      and
+      0x0
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":3172:3180  walletOf */
+      0x1
+        /* "ArichToken.sol":3172:3185  walletOf[_to] */
+      0x20
+      dup2
+      swap1
+      mstore
+      0x40
+      swap1
+      swap2
+      keccak256
+        /* "ArichToken.sol":3172:3192  walletOf[_to].freeze */
+      add
+      sload
+      0xff
+      and
+        /* "ArichToken.sol":3171:3192  !walletOf[_to].freeze */
+      iszero
+        /* "ArichToken.sol":3163:3193  require(!walletOf[_to].freeze) */
+      tag_109
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_109:
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":3211:3225  balanceOf[_to] */
+      dup3
+      and
+        /* "ArichToken.sol":3228:3229  0 */
+      0x0
+        /* "ArichToken.sol":3211:3225  balanceOf[_to] */
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":3211:3220  balanceOf */
+      0x2
+        /* "ArichToken.sol":3211:3225  balanceOf[_to] */
+      0x20
+      mstore
+      0x40
+      dup2
+      keccak256
+      sload
+        /* "ArichToken.sol":3211:3229  balanceOf[_to] > 0 */
+      gt
+        /* "ArichToken.sol":3203:3230  require(balanceOf[_to] > 0) */
+      tag_110
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_110:
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":3240:3253  walletOf[_to] */
+      dup3
+      and
+      0x0
+      dup2
+      dup2
+      mstore
+        /* "ArichToken.sol":3263:3267  true */
+      0x1
+        /* "ArichToken.sol":3240:3253  walletOf[_to] */
+      0x20
+      dup2
+      dup2
+      mstore
+      0x40
+      dup1
+      dup5
+      keccak256
+        /* "ArichToken.sol":3240:3260  walletOf[_to].freeze */
+      dup1
+      dup5
+      add
+        /* "ArichToken.sol":3240:3267  walletOf[_to].freeze = true */
+      dup1
+      sload
+      not(0xff)
+      and
+      dup6
+      or
+      swap1
+      sstore
+        /* "ArichToken.sol":3306:3315  balanceOf */
+      0x2
+        /* "ArichToken.sol":3306:3320  balanceOf[_to] */
+      dup1
+      dup5
+      mstore
+      dup3
+      dup7
+      keccak256
+      sload
+        /* "ArichToken.sol":3277:3320  walletOf[_to].last_balance = balanceOf[_to] */
+      dup3
+      sstore
+        /* "ArichToken.sol":3330:3377  walletOf[_to].f_reason = "Freezed by the owner" */
+      dup3
+      mload
+      dup1
+      dup5
+      add
+      swap1
+      swap4
+      mstore
+      0x14
+      dup4
+      mstore
+      0x467265657a656420627920746865206f776e6572000000000000000000000000
+      dup4
+      dup6
+      add
+      swap1
+      dup2
+      mstore
+        /* "ArichToken.sol":3330:3343  walletOf[_to] */
+      swap7
+      swap1
+      swap6
+      mstore
+      swap3
+      swap1
+      swap2
+      mstore
+        /* "ArichToken.sol":3330:3377  walletOf[_to].f_reason = "Freezed by the owner" */
+      mload
+      tag_111
+      swap4
+        /* "ArichToken.sol":3330:3352  walletOf[_to].f_reason */
+      swap3
+      swap1
+      swap2
+      add
+      swap2
+        /* "ArichToken.sol":3330:3377  walletOf[_to].f_reason = "Freezed by the owner" */
+      swap1
+      jump	// in(tag_67)
+    tag_111:
+      pop
+        /* "ArichToken.sol":3392:3404  Freezed(_to) */
+      mload(0x40)
+      sub(exp(0x2, 0xa0), 0x1)
+      dup4
+      and
+      swap1
+      0xde8364a528e5ca2869160b20c375fe85b4e98d24a9cb48b4dc49c5f76d05b24
+      swap1
+      0x0
+      swap1
+      log2
+      pop
+        /* "ArichToken.sol":3421:3425  true */
+      0x1
+        /* "ArichToken.sol":3050:3432  function freezeAccount(address _to) public returns(bool success) {... */
+      swap2
+      swap1
+      pop
+      jump	// out
+        /* "ArichToken.sol":26:4936  contract ArichToken {... */
+    tag_67:
+      dup3
+      dup1
+      sload
+      0x1
+      dup2
+      0x1
+      and
+      iszero
+      0x100
+      mul
+      sub
+      and
+      0x2
+      swap1
+      div
+      swap1
+      0x0
+      mstore
+      keccak256(0x0, 0x20)
+      swap1
+      0x1f
+      add
+      0x20
+      swap1
+      div
+      dup2
+      add
+      swap3
+      dup3
+      0x1f
+      lt
+      tag_113
+      jumpi
+      dup1
+      mload
+      not(0xff)
+      and
+      dup4
+      dup1
+      add
+      or
+      dup6
+      sstore
+      jump(tag_115)
+    tag_113:
+      dup3
+      dup1
+      add
+      0x1
+      add
+      dup6
+      sstore
+      dup3
+      iszero
+      tag_115
+      jumpi
+      swap2
+      dup3
+      add
+    tag_114:
+      dup3
+      dup2
+      gt
+      iszero
+      tag_115
+      jumpi
+      dup3
+      mload
+      dup3
+      sstore
+      swap2
+      0x20
+      add
+      swap2
+      swap1
+      0x1
+      add
+      swap1
+      jump(tag_114)
+    tag_115:
+      pop
+      tag_116
+      swap3
+      swap2
+      pop
+      jump	// in(tag_117)
+    tag_116:
+      pop
+      swap1
+      jump	// out
+    tag_117:
+      tag_118
+      swap2
+      swap1
+    tag_119:
+      dup1
+      dup3
+      gt
+      iszero
+      tag_116
+      jumpi
+      0x0
+      dup2
+      sstore
+      0x1
+      add
+      jump(tag_119)
+    tag_118:
+      swap1
+      jump	// out
+
+    auxdata: 0xa165627a7a72305820d449303b7cd1e35c6c4096c90c69d17e7b0b91f759dd61f674be439a9d88b6a30029
+}

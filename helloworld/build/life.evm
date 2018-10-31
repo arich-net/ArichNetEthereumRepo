@@ -1,0 +1,145 @@
+    /* "HelloWorld.sol":26:188  contract life {... */
+  mstore(0x40, 0x80)
+    /* "HelloWorld.sol":65:109  constructor() public { owner = msg.sender; } */
+  callvalue
+    /* "--CODEGEN--":8:17   */
+  dup1
+    /* "--CODEGEN--":5:7   */
+  iszero
+  tag_1
+  jumpi
+    /* "--CODEGEN--":30:31   */
+  0x0
+    /* "--CODEGEN--":27:28   */
+  dup1
+    /* "--CODEGEN--":20:32   */
+  revert
+    /* "--CODEGEN--":5:7   */
+tag_1:
+    /* "HelloWorld.sol":65:109  constructor() public { owner = msg.sender; } */
+  pop
+    /* "HelloWorld.sol":96:106  msg.sender */
+  caller
+    /* "HelloWorld.sol":88:93  owner */
+  0x0
+  dup1
+    /* "HelloWorld.sol":88:106  owner = msg.sender */
+  0x100
+  exp
+  dup2
+  sload
+  dup2
+  0xffffffffffffffffffffffffffffffffffffffff
+  mul
+  not
+  and
+  swap1
+  dup4
+  0xffffffffffffffffffffffffffffffffffffffff
+  and
+  mul
+  or
+  swap1
+  sstore
+  pop
+    /* "HelloWorld.sol":26:188  contract life {... */
+  dataSize(sub_0)
+  dup1
+  dataOffset(sub_0)
+  0x0
+  codecopy
+  0x0
+  return
+stop
+
+sub_0: assembly {
+        /* "HelloWorld.sol":26:188  contract life {... */
+      mstore(0x40, 0x80)
+      jumpi(tag_1, lt(calldatasize, 0x4))
+      calldataload(0x0)
+      0x100000000000000000000000000000000000000000000000000000000
+      swap1
+      div
+      0xffffffff
+      and
+      dup1
+      0x41c0e1b5
+      eq
+      tag_2
+      jumpi
+    tag_1:
+      0x0
+      dup1
+      revert
+        /* "HelloWorld.sol":114:186  function kill() public { if (msg.sender == owner) selfdestruct(owner); } */
+    tag_2:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_3
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_3:
+        /* "HelloWorld.sol":114:186  function kill() public { if (msg.sender == owner) selfdestruct(owner); } */
+      pop
+      tag_4
+      jump(tag_5)
+    tag_4:
+      stop
+    tag_5:
+        /* "HelloWorld.sol":157:162  owner */
+      0x0
+      dup1
+      swap1
+      sload
+      swap1
+      0x100
+      exp
+      swap1
+      div
+      0xffffffffffffffffffffffffffffffffffffffff
+      and
+        /* "HelloWorld.sol":143:162  msg.sender == owner */
+      0xffffffffffffffffffffffffffffffffffffffff
+      and
+        /* "HelloWorld.sol":143:153  msg.sender */
+      caller
+        /* "HelloWorld.sol":143:162  msg.sender == owner */
+      0xffffffffffffffffffffffffffffffffffffffff
+      and
+      eq
+        /* "HelloWorld.sol":139:183  if (msg.sender == owner) selfdestruct(owner) */
+      iszero
+      tag_7
+      jumpi
+        /* "HelloWorld.sol":177:182  owner */
+      0x0
+      dup1
+      swap1
+      sload
+      swap1
+      0x100
+      exp
+      swap1
+      div
+      0xffffffffffffffffffffffffffffffffffffffff
+      and
+        /* "HelloWorld.sol":164:183  selfdestruct(owner) */
+      0xffffffffffffffffffffffffffffffffffffffff
+      and
+      selfdestruct
+        /* "HelloWorld.sol":139:183  if (msg.sender == owner) selfdestruct(owner) */
+    tag_7:
+        /* "HelloWorld.sol":114:186  function kill() public { if (msg.sender == owner) selfdestruct(owner); } */
+      jump	// out
+
+    auxdata: 0xa165627a7a7230582030722c03b74185e0ed78fbccc0141353c3de973ad1fdc46318117c110711047f0029
+}

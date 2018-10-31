@@ -1,0 +1,586 @@
+    /* "ArichToken.sol":26:1325  contract ArichToken {... */
+  mstore(0x40, 0x80)
+    /* "ArichToken.sol":169:334  function ArichToken(uint256 initialSupply) public {... */
+  callvalue
+    /* "--CODEGEN--":8:17   */
+  dup1
+    /* "--CODEGEN--":5:7   */
+  iszero
+  tag_1
+  jumpi
+    /* "--CODEGEN--":30:31   */
+  0x0
+    /* "--CODEGEN--":27:28   */
+  dup1
+    /* "--CODEGEN--":20:32   */
+  revert
+    /* "--CODEGEN--":5:7   */
+tag_1:
+    /* "ArichToken.sol":169:334  function ArichToken(uint256 initialSupply) public {... */
+  pop
+  mload(0x40)
+  0x20
+  dup1
+  bytecodeSize
+  dup4
+  codecopy
+  dup2
+  add
+  0x40
+  swap1
+  dup2
+  mstore
+  swap1
+  mload
+    /* "ArichToken.sol":229:234  owner */
+  0x1
+    /* "ArichToken.sol":229:247  owner = msg.sender */
+  dup1
+  sload
+  not(sub(exp(0x2, 0xa0), 0x1))
+  and
+    /* "ArichToken.sol":237:247  msg.sender */
+  caller
+    /* "ArichToken.sol":229:247  owner = msg.sender */
+  swap1
+  dup2
+  or
+  swap1
+  swap2
+  sstore
+    /* "ArichToken.sol":229:234  owner */
+  0x0
+    /* "ArichToken.sol":257:278  balanceOf[msg.sender] */
+  swap1
+  dup2
+  mstore
+    /* "ArichToken.sol":169:334  function ArichToken(uint256 initialSupply) public {... */
+  0x20
+    /* "ArichToken.sol":257:278  balanceOf[msg.sender] */
+  dup2
+  swap1
+  mstore
+  swap2
+  swap1
+  swap2
+  keccak256
+    /* "ArichToken.sol":257:294  balanceOf[msg.sender] = initialSupply */
+  sstore
+    /* "ArichToken.sol":26:1325  contract ArichToken {... */
+  dataSize(sub_0)
+  dup1
+  dataOffset(sub_0)
+  0x0
+  codecopy
+  0x0
+  return
+stop
+
+sub_0: assembly {
+        /* "ArichToken.sol":26:1325  contract ArichToken {... */
+      mstore(0x40, 0x80)
+      jumpi(tag_1, lt(calldatasize, 0x4))
+      and(div(calldataload(0x0), 0x100000000000000000000000000000000000000000000000000000000), 0xffffffff)
+      0x41c0e1b5
+      dup2
+      eq
+      tag_2
+      jumpi
+      dup1
+      0x70a08231
+      eq
+      tag_3
+      jumpi
+      dup1
+      0x8da5cb5b
+      eq
+      tag_4
+      jumpi
+      dup1
+      0xa9059cbb
+      eq
+      tag_5
+      jumpi
+      dup1
+      0xb8cb65ee
+      eq
+      tag_6
+      jumpi
+      dup1
+      0xc6ed8990
+      eq
+      tag_7
+      jumpi
+    tag_1:
+      0x0
+      dup1
+      revert
+        /* "ArichToken.sol":1258:1323  function kill() { if (msg.sender == owner) selfdestruct(owner); } */
+    tag_2:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_8
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_8:
+        /* "ArichToken.sol":1258:1323  function kill() { if (msg.sender == owner) selfdestruct(owner); } */
+      pop
+      tag_9
+      jump(tag_10)
+    tag_9:
+      stop
+        /* "ArichToken.sol":52:97  mapping (address => uint256) public balanceOf */
+    tag_3:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_11
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_11:
+      pop
+        /* "ArichToken.sol":52:97  mapping (address => uint256) public balanceOf */
+      tag_12
+      and(calldataload(0x4), sub(exp(0x2, 0xa0), 0x1))
+      jump(tag_13)
+    tag_12:
+      0x40
+      dup1
+      mload
+      swap2
+      dup3
+      mstore
+      mload
+      swap1
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      return
+        /* "ArichToken.sol":103:123  address public owner */
+    tag_4:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_14
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_14:
+        /* "ArichToken.sol":103:123  address public owner */
+      pop
+      tag_15
+      jump(tag_16)
+    tag_15:
+      0x40
+      dup1
+      mload
+      sub(exp(0x2, 0xa0), 0x1)
+      swap1
+      swap3
+      and
+      dup3
+      mstore
+      mload
+      swap1
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      return
+        /* "ArichToken.sol":398:687  function transfer(address _to, uint256 _value) public returns(bool success) {... */
+    tag_5:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_17
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_17:
+      pop
+        /* "ArichToken.sol":398:687  function transfer(address _to, uint256 _value) public returns(bool success) {... */
+      tag_18
+      and(calldataload(0x4), sub(exp(0x2, 0xa0), 0x1))
+      calldataload(0x24)
+      jump(tag_19)
+    tag_18:
+      0x40
+      dup1
+      mload
+      swap2
+      iszero
+      iszero
+      dup3
+      mstore
+      mload
+      swap1
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      return
+        /* "ArichToken.sol":990:1219  function removeTokens(uint256 _value) public returns(bool success) {... */
+    tag_6:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_20
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_20:
+      pop
+        /* "ArichToken.sol":990:1219  function removeTokens(uint256 _value) public returns(bool success) {... */
+      tag_18
+      calldataload(0x4)
+      jump(tag_22)
+        /* "ArichToken.sol":724:950  function addTokens(uint256 _value) public returns(bool success) {... */
+    tag_7:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_23
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_23:
+      pop
+        /* "ArichToken.sol":724:950  function addTokens(uint256 _value) public returns(bool success) {... */
+      tag_18
+      calldataload(0x4)
+      jump(tag_25)
+        /* "ArichToken.sol":1258:1323  function kill() { if (msg.sender == owner) selfdestruct(owner); } */
+    tag_10:
+        /* "ArichToken.sol":1294:1299  owner */
+      and(sub(exp(0x2, 0xa0), 0x1), sload(0x1))
+        /* "ArichToken.sol":1280:1290  msg.sender */
+      caller
+        /* "ArichToken.sol":1280:1299  msg.sender == owner */
+      eq
+        /* "ArichToken.sol":1276:1320  if (msg.sender == owner) selfdestruct(owner) */
+      iszero
+      tag_27
+      jumpi
+        /* "ArichToken.sol":1314:1319  owner */
+      and(sub(exp(0x2, 0xa0), 0x1), sload(0x1))
+        /* "ArichToken.sol":1301:1320  selfdestruct(owner) */
+      selfdestruct
+        /* "ArichToken.sol":1276:1320  if (msg.sender == owner) selfdestruct(owner) */
+    tag_27:
+        /* "ArichToken.sol":1258:1323  function kill() { if (msg.sender == owner) selfdestruct(owner); } */
+      jump	// out
+        /* "ArichToken.sol":52:97  mapping (address => uint256) public balanceOf */
+    tag_13:
+      0x0
+      0x20
+      dup2
+      swap1
+      mstore
+      swap1
+      dup2
+      mstore
+      0x40
+      swap1
+      keccak256
+      sload
+      dup2
+      jump	// out
+        /* "ArichToken.sol":103:123  address public owner */
+    tag_16:
+      and(sub(exp(0x2, 0xa0), 0x1), sload(0x1))
+      dup2
+      jump	// out
+        /* "ArichToken.sol":398:687  function transfer(address _to, uint256 _value) public returns(bool success) {... */
+    tag_19:
+        /* "ArichToken.sol":502:512  msg.sender */
+      caller
+        /* "ArichToken.sol":460:472  bool success */
+      0x0
+        /* "ArichToken.sol":492:513  balanceOf[msg.sender] */
+      swap1
+      dup2
+      mstore
+      0x20
+      dup2
+      swap1
+      mstore
+      0x40
+      dup2
+      keccak256
+      sload
+        /* "ArichToken.sol":492:523  balanceOf[msg.sender] >= _value */
+      dup3
+      gt
+      iszero
+        /* "ArichToken.sol":484:524  require(balanceOf[msg.sender] >= _value) */
+      tag_29
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_29:
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":569:583  balanceOf[_to] */
+      dup4
+      and
+        /* "ArichToken.sol":569:578  balanceOf */
+      0x0
+        /* "ArichToken.sol":569:583  balanceOf[_to] */
+      swap1
+      dup2
+      mstore
+      0x20
+      dup2
+      swap1
+      mstore
+      0x40
+      swap1
+      keccak256
+      sload
+        /* "ArichToken.sol":542:565  balanceOf[_to] + _value */
+      dup3
+      dup2
+      add
+        /* "ArichToken.sol":542:583  balanceOf[_to] + _value >= balanceOf[_to] */
+      lt
+      iszero
+        /* "ArichToken.sol":534:584  require(balanceOf[_to] + _value >= balanceOf[_to]) */
+      tag_30
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_30:
+      pop
+        /* "ArichToken.sol":604:614  msg.sender */
+      caller
+        /* "ArichToken.sol":594:603  balanceOf */
+      0x0
+        /* "ArichToken.sol":594:615  balanceOf[msg.sender] */
+      swap1
+      dup2
+      mstore
+      0x20
+      dup2
+      swap1
+      mstore
+      0x40
+      dup1
+      dup3
+      keccak256
+        /* "ArichToken.sol":594:625  balanceOf[msg.sender] -= _value */
+      dup1
+      sload
+      dup5
+      swap1
+      sub
+      swap1
+      sstore
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":635:649  balanceOf[_to] */
+      dup5
+      and
+      dup3
+      mstore
+      swap1
+      keccak256
+        /* "ArichToken.sol":635:659  balanceOf[_to] += _value */
+      dup1
+      sload
+      dup3
+      add
+      swap1
+      sstore
+      0x1
+        /* "ArichToken.sol":398:687  function transfer(address _to, uint256 _value) public returns(bool success) {... */
+      swap3
+      swap2
+      pop
+      pop
+      jump	// out
+        /* "ArichToken.sol":990:1219  function removeTokens(uint256 _value) public returns(bool success) {... */
+    tag_22:
+        /* "ArichToken.sol":1089:1094  owner */
+      sload(0x1)
+        /* "ArichToken.sol":1043:1055  bool success */
+      0x0
+      swap1
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":1089:1094  owner */
+      and
+        /* "ArichToken.sol":1075:1085  msg.sender */
+      caller
+        /* "ArichToken.sol":1075:1094  msg.sender == owner */
+      eq
+        /* "ArichToken.sol":1067:1095  require(msg.sender == owner) */
+      tag_32
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_32:
+        /* "ArichToken.sol":1122:1125  100 */
+      0x64
+        /* "ArichToken.sol":1113:1125  _value < 100 */
+      dup3
+      lt
+        /* "ArichToken.sol":1105:1126  require(_value < 100) */
+      tag_33
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_33:
+      pop
+        /* "ArichToken.sol":1175:1180  owner */
+      0x1
+      dup1
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":1165:1174  balanceOf */
+      0x0
+        /* "ArichToken.sol":1165:1181  balanceOf[owner] */
+      swap1
+      dup2
+      mstore
+      0x20
+      dup2
+      swap1
+      mstore
+      0x40
+      swap1
+      keccak256
+        /* "ArichToken.sol":1165:1191  balanceOf[owner] -= _value */
+      dup1
+      sload
+      dup4
+      swap1
+      sub
+      swap1
+      sstore
+        /* "ArichToken.sol":990:1219  function removeTokens(uint256 _value) public returns(bool success) {... */
+      swap2
+      swap1
+      pop
+      jump	// out
+        /* "ArichToken.sol":724:950  function addTokens(uint256 _value) public returns(bool success) {... */
+    tag_25:
+        /* "ArichToken.sol":820:825  owner */
+      sload(0x1)
+        /* "ArichToken.sol":774:786  bool success */
+      0x0
+      swap1
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "ArichToken.sol":820:825  owner */
+      and
+        /* "ArichToken.sol":806:816  msg.sender */
+      caller
+        /* "ArichToken.sol":806:825  msg.sender == owner */
+      eq
+        /* "ArichToken.sol":798:826  require(msg.sender == owner) */
+      tag_35
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_35:
+        /* "ArichToken.sol":853:856  100 */
+      0x64
+        /* "ArichToken.sol":844:856  _value < 100 */
+      dup3
+      lt
+        /* "ArichToken.sol":836:857  require(_value < 100) */
+      tag_36
+      jumpi
+      0x0
+      dup1
+      revert
+    tag_36:
+      pop
+        /* "ArichToken.sol":906:911  owner */
+      0x1
+      dup1
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+        /* "ArichToken.sol":896:905  balanceOf */
+      0x0
+        /* "ArichToken.sol":896:912  balanceOf[owner] */
+      swap1
+      dup2
+      mstore
+      0x20
+      dup2
+      swap1
+      mstore
+      0x40
+      swap1
+      keccak256
+        /* "ArichToken.sol":896:922  balanceOf[owner] += _value */
+      dup1
+      sload
+      dup4
+      add
+      swap1
+      sstore
+        /* "ArichToken.sol":724:950  function addTokens(uint256 _value) public returns(bool success) {... */
+      swap2
+      swap1
+      pop
+      jump	// out
+
+    auxdata: 0xa165627a7a72305820324f304bacbcc13a9b513103aba05e04bec9715c8b31bbe8976dfa33ee1989cc0029
+}

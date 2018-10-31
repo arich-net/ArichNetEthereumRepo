@@ -1,0 +1,1419 @@
+PragmaDirective
+   Source: "pragma solidity ^0.4.20;"
+ContractDefinition "ArichToken"
+   Source: "contract ArichToken {\n    struct Account {\n        uint256 last_balance;\n        bool freeze;\n        bool burn;\n        string f_reason;\n        string b_reason;\n    }\n    \n    address owner;\n    // Mapping Wallet for all accounts\n    mapping (address => Account) public walletOf;\n    // Mapping Balance for all accounts\n    mapping (address => uint256) public balanceOf;\n    // Array of created Accounts\n    address[] public created_accounts;\n    // This generates a public event on the blockchain that will notify clients\n    event Transfer(address indexed from, address indexed to, uint256 value);\n    // This will generate an Event to notify clients an account is Freezed\n    event Freezed(address indexed freezed);\n    // This will generate an Event to notify clients an account is Unfreezed\n    event Unfreezed(address indexed unfreezed);\n    // This will generate an Event to notify clients an account was Burn\n    event Burnt(address indexed burnt);\n    \n    /* Mapping for ALL balances */\n    function ArichToken(uint256 initialSupply) public {\n        owner = msg.sender;\n        /* Initialize Wallet for Owner */\n        walletOf[owner] = Account({last_balance: 0, \n                                   freeze: false,\n                                   burn: false,\n                                   f_reason: \"\",\n                                   b_reason: \"\"});\n        /* Give to the owner all tokens */\n        balanceOf[owner] = initialSupply;\n\n        /* Start with the Array of Accounts */\n        created_accounts.push(owner);\n    }\n    \n    /* Transfer tokens from one account to another */\n    function transfer(address _to, uint256 _value) public returns(bool success) {\n        bool retval;\n        require(!walletOf[msg.sender].freeze);\n        require(!walletOf[msg.sender].burn);\n        if (balanceOf[msg.sender] > _value) {\n            if (balanceOf[_to] == 0)\n                created_accounts.push(_to);\n            balanceOf[_to] += _value;\n            balanceOf[msg.sender] -= _value;\n            retval = true;\n        }\n        else {\n            /* Freeze the account since this is not a valid transaction */\n            walletOf[msg.sender].freeze = true;\n            walletOf[msg.sender].last_balance = balanceOf[msg.sender];\n            walletOf[msg.sender].f_reason = \"Transfer more than funds available\";\n            retval = false;\n        }\n        return retval;\n    }\n    \n    /* Add more tokens */ \n    function addTokens(uint256 _value) public returns(bool success) {\n        require(msg.sender == owner);\n        require(_value < 100); // Not more than 100 Tokens \n        balanceOf[owner] += _value;\n        return true;\n    }\n    \n    /* Remove more tokens */\n    function removeTokens(uint256 _value) public returns(bool success) {\n        require(msg.sender == owner);\n        require(balanceOf[owner] - _value > 0);\n        require(_value < 100); // Not more than 100 Tokens \n        balanceOf[owner] -= _value;\n        return true;\n    }\n\n    /* Freeze an Account */\n    function freezeAccount(address _to) public returns(bool success) {\n        require(msg.sender == owner);\n        require(!walletOf[_to].freeze);\n        require(balanceOf[_to] > 0);\n        walletOf[_to].freeze = true;\n        walletOf[_to].last_balance = balanceOf[_to];\n        walletOf[_to].f_reason = \"Freezed by the owner\";\n        emit Freezed(_to);\n        return true;\n    }\n    /* Unfreeze an Account */\n    function unfreezeAccount(address _to) public returns(bool success) {\n        require(msg.sender == owner);\n        require(walletOf[_to].freeze);\n        walletOf[_to].freeze = false;\n        balanceOf[_to] = walletOf[_to].last_balance;\n        walletOf[_to].f_reason = \"Unfreezed by the owner\";\n        emit Unfreezed(_to);\n        return true;\n    }\n\n    /* Burn an Account */\n    function burnAccount(address _to, string _reason) public returns(bool success) {\n        require(msg.sender == owner);\n        require(!walletOf[_to].burn);\n        require(balanceOf[_to] > 0);\n        walletOf[_to].burn = true;\n        walletOf[_to].last_balance = balanceOf[_to];\n        walletOf[_to].b_reason = _reason;\n        balanceOf[owner] += balanceOf[_to];\n        balanceOf[_to] = 0;\n        emit Burnt(_to);\n        return true;\n    }\n\n    /* Burn ALL Accounts */\n    function burnALL(string _reason) public returns(bool success) {\n        require(msg.sender == owner);\n        for (uint i = 0; i < created_accounts.length; i++) {\n            walletOf[created_accounts[i]].burn = true;\n            walletOf[created_accounts[i]].last_balance = balanceOf[created_accounts[i]];\n            walletOf[created_accounts[i]].b_reason = _reason;\n            balanceOf[created_accounts[i]] = 0;\n            emit Burnt(created_accounts[i]);\n        }\n        return true;\n    }\n    \n    /* Kill Smart Contract */\n    function kill() { if (msg.sender == owner) selfdestruct(owner); }\n}"
+  StructDefinition "Account"
+     Source: "struct Account {\n        uint256 last_balance;\n        bool freeze;\n        bool burn;\n        string f_reason;\n        string b_reason;\n    }"
+    VariableDeclaration "last_balance"
+       Type: uint256
+       Source: "uint256 last_balance"
+      ElementaryTypeName uint256
+         Source: "uint256"
+    VariableDeclaration "freeze"
+       Type: bool
+       Source: "bool freeze"
+      ElementaryTypeName bool
+         Source: "bool"
+    VariableDeclaration "burn"
+       Type: bool
+       Source: "bool burn"
+      ElementaryTypeName bool
+         Source: "bool"
+    VariableDeclaration "f_reason"
+       Type: string storage pointer
+       Source: "string f_reason"
+      ElementaryTypeName string
+         Source: "string"
+    VariableDeclaration "b_reason"
+       Type: string storage pointer
+       Source: "string b_reason"
+      ElementaryTypeName string
+         Source: "string"
+  VariableDeclaration "owner"
+     Type: address
+     Source: "address owner"
+    ElementaryTypeName address
+       Source: "address"
+  VariableDeclaration "walletOf"
+     Type: mapping(address => struct ArichToken.Account storage ref)
+     Source: "mapping (address => Account) public walletOf"
+    Mapping
+       Source: "mapping (address => Account)"
+      ElementaryTypeName address
+         Source: "address"
+      UserDefinedTypeName "Account"
+         Source: "Account"
+  VariableDeclaration "balanceOf"
+     Type: mapping(address => uint256)
+     Source: "mapping (address => uint256) public balanceOf"
+    Mapping
+       Source: "mapping (address => uint256)"
+      ElementaryTypeName address
+         Source: "address"
+      ElementaryTypeName uint256
+         Source: "uint256"
+  VariableDeclaration "created_accounts"
+     Type: address[] storage ref
+     Source: "address[] public created_accounts"
+    ArrayTypeName
+       Source: "address[]"
+      ElementaryTypeName address
+         Source: "address"
+  EventDefinition "Transfer"
+     Source: "event Transfer(address indexed from, address indexed to, uint256 value);"
+    ParameterList
+       Source: "(address indexed from, address indexed to, uint256 value)"
+      VariableDeclaration "from"
+         Type: address
+         Source: "address indexed from"
+        ElementaryTypeName address
+           Source: "address"
+      VariableDeclaration "to"
+         Type: address
+         Source: "address indexed to"
+        ElementaryTypeName address
+           Source: "address"
+      VariableDeclaration "value"
+         Type: uint256
+         Source: "uint256 value"
+        ElementaryTypeName uint256
+           Source: "uint256"
+  EventDefinition "Freezed"
+     Source: "event Freezed(address indexed freezed);"
+    ParameterList
+       Source: "(address indexed freezed)"
+      VariableDeclaration "freezed"
+         Type: address
+         Source: "address indexed freezed"
+        ElementaryTypeName address
+           Source: "address"
+  EventDefinition "Unfreezed"
+     Source: "event Unfreezed(address indexed unfreezed);"
+    ParameterList
+       Source: "(address indexed unfreezed)"
+      VariableDeclaration "unfreezed"
+         Type: address
+         Source: "address indexed unfreezed"
+        ElementaryTypeName address
+           Source: "address"
+  EventDefinition "Burnt"
+     Source: "event Burnt(address indexed burnt);"
+    ParameterList
+       Source: "(address indexed burnt)"
+      VariableDeclaration "burnt"
+         Type: address
+         Source: "address indexed burnt"
+        ElementaryTypeName address
+           Source: "address"
+  FunctionDefinition "ArichToken" - public
+     Source: "function ArichToken(uint256 initialSupply) public {\n        owner = msg.sender;\n        /* Initialize Wallet for Owner */\n        walletOf[owner] = Account({last_balance: 0, \n                                   freeze: false,\n                                   burn: false,\n                                   f_reason: \"\",\n                                   b_reason: \"\"});\n        /* Give to the owner all tokens */\n        balanceOf[owner] = initialSupply;\n\n        /* Start with the Array of Accounts */\n        created_accounts.push(owner);\n    }"
+    ParameterList
+       Source: "(uint256 initialSupply)"
+      VariableDeclaration "initialSupply"
+         Type: uint256
+         Source: "uint256 initialSupply"
+        ElementaryTypeName uint256
+           Source: "uint256"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{\n        owner = msg.sender;\n        /* Initialize Wallet for Owner */\n        walletOf[owner] = Account({last_balance: 0, \n                                   freeze: false,\n                                   burn: false,\n                                   f_reason: \"\",\n                                   b_reason: \"\"});\n        /* Give to the owner all tokens */\n        balanceOf[owner] = initialSupply;\n\n        /* Start with the Array of Accounts */\n        created_accounts.push(owner);\n    }"
+      ExpressionStatement
+         Source: "owner = msg.sender"
+        Assignment using operator =
+           Type: address
+           Source: "owner = msg.sender"
+          Identifier owner
+             Type: address
+             Source: "owner"
+          MemberAccess to member sender
+             Type: address
+             Source: "msg.sender"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+      ExpressionStatement
+         Source: "walletOf[owner] = Account({last_balance: 0, \n                                   freeze: false,\n                                   burn: false,\n                                   f_reason: \"\",\n                                   b_reason: \"\"})"
+        Assignment using operator =
+           Type: struct ArichToken.Account storage ref
+           Source: "walletOf[owner] = Account({last_balance: 0, \n                                   freeze: false,\n                                   burn: false,\n                                   f_reason: \"\",\n                                   b_reason: \"\"})"
+          IndexAccess
+             Type: struct ArichToken.Account storage ref
+             Source: "walletOf[owner]"
+            Identifier walletOf
+               Type: mapping(address => struct ArichToken.Account storage ref)
+               Source: "walletOf"
+            Identifier owner
+               Type: address
+               Source: "owner"
+          FunctionCall
+             Type: struct ArichToken.Account memory
+             Source: "Account({last_balance: 0, \n                                   freeze: false,\n                                   burn: false,\n                                   f_reason: \"\",\n                                   b_reason: \"\"})"
+            Identifier Account
+               Type: type(struct ArichToken.Account storage pointer)
+               Source: "Account"
+            Literal, token: [no token] value: 0
+               Type: int_const 0
+               Source: "0"
+            Literal, token: false value: false
+               Type: bool
+               Source: "false"
+            Literal, token: false value: false
+               Type: bool
+               Source: "false"
+            Literal, token: [no token] value: 
+               Type: literal_string ""
+               Source: "\"\""
+            Literal, token: [no token] value: 
+               Type: literal_string ""
+               Source: "\"\""
+      ExpressionStatement
+         Source: "balanceOf[owner] = initialSupply"
+        Assignment using operator =
+           Type: uint256
+           Source: "balanceOf[owner] = initialSupply"
+          IndexAccess
+             Type: uint256
+             Source: "balanceOf[owner]"
+            Identifier balanceOf
+               Type: mapping(address => uint256)
+               Source: "balanceOf"
+            Identifier owner
+               Type: address
+               Source: "owner"
+          Identifier initialSupply
+             Type: uint256
+             Source: "initialSupply"
+      ExpressionStatement
+         Source: "created_accounts.push(owner)"
+        FunctionCall
+           Type: uint256
+           Source: "created_accounts.push(owner)"
+          MemberAccess to member push
+             Type: function (address) returns (uint256)
+             Source: "created_accounts.push"
+            Identifier created_accounts
+               Type: address[] storage ref
+               Source: "created_accounts"
+          Identifier owner
+             Type: address
+             Source: "owner"
+  FunctionDefinition "transfer" - public
+     Source: "function transfer(address _to, uint256 _value) public returns(bool success) {\n        bool retval;\n        require(!walletOf[msg.sender].freeze);\n        require(!walletOf[msg.sender].burn);\n        if (balanceOf[msg.sender] > _value) {\n            if (balanceOf[_to] == 0)\n                created_accounts.push(_to);\n            balanceOf[_to] += _value;\n            balanceOf[msg.sender] -= _value;\n            retval = true;\n        }\n        else {\n            /* Freeze the account since this is not a valid transaction */\n            walletOf[msg.sender].freeze = true;\n            walletOf[msg.sender].last_balance = balanceOf[msg.sender];\n            walletOf[msg.sender].f_reason = \"Transfer more than funds available\";\n            retval = false;\n        }\n        return retval;\n    }"
+    ParameterList
+       Source: "(address _to, uint256 _value)"
+      VariableDeclaration "_to"
+         Type: address
+         Source: "address _to"
+        ElementaryTypeName address
+           Source: "address"
+      VariableDeclaration "_value"
+         Type: uint256
+         Source: "uint256 _value"
+        ElementaryTypeName uint256
+           Source: "uint256"
+    ParameterList
+       Source: "(bool success)"
+      VariableDeclaration "success"
+         Type: bool
+         Source: "bool success"
+        ElementaryTypeName bool
+           Source: "bool"
+    Block
+       Source: "{\n        bool retval;\n        require(!walletOf[msg.sender].freeze);\n        require(!walletOf[msg.sender].burn);\n        if (balanceOf[msg.sender] > _value) {\n            if (balanceOf[_to] == 0)\n                created_accounts.push(_to);\n            balanceOf[_to] += _value;\n            balanceOf[msg.sender] -= _value;\n            retval = true;\n        }\n        else {\n            /* Freeze the account since this is not a valid transaction */\n            walletOf[msg.sender].freeze = true;\n            walletOf[msg.sender].last_balance = balanceOf[msg.sender];\n            walletOf[msg.sender].f_reason = \"Transfer more than funds available\";\n            retval = false;\n        }\n        return retval;\n    }"
+      VariableDeclarationStatement
+         Source: "bool retval"
+        VariableDeclaration "retval"
+           Type: bool
+           Source: "bool retval"
+          ElementaryTypeName bool
+             Source: "bool"
+      ExpressionStatement
+         Source: "require(!walletOf[msg.sender].freeze)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(!walletOf[msg.sender].freeze)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          UnaryOperation (prefix) !
+             Type: bool
+             Source: "!walletOf[msg.sender].freeze"
+            MemberAccess to member freeze
+               Type: bool
+               Source: "walletOf[msg.sender].freeze"
+              IndexAccess
+                 Type: struct ArichToken.Account storage ref
+                 Source: "walletOf[msg.sender]"
+                Identifier walletOf
+                   Type: mapping(address => struct ArichToken.Account storage ref)
+                   Source: "walletOf"
+                MemberAccess to member sender
+                   Type: address
+                   Source: "msg.sender"
+                  Identifier msg
+                     Type: msg
+                     Source: "msg"
+      ExpressionStatement
+         Source: "require(!walletOf[msg.sender].burn)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(!walletOf[msg.sender].burn)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          UnaryOperation (prefix) !
+             Type: bool
+             Source: "!walletOf[msg.sender].burn"
+            MemberAccess to member burn
+               Type: bool
+               Source: "walletOf[msg.sender].burn"
+              IndexAccess
+                 Type: struct ArichToken.Account storage ref
+                 Source: "walletOf[msg.sender]"
+                Identifier walletOf
+                   Type: mapping(address => struct ArichToken.Account storage ref)
+                   Source: "walletOf"
+                MemberAccess to member sender
+                   Type: address
+                   Source: "msg.sender"
+                  Identifier msg
+                     Type: msg
+                     Source: "msg"
+      IfStatement
+         Source: "if (balanceOf[msg.sender] > _value) {\n            if (balanceOf[_to] == 0)\n                created_accounts.push(_to);\n            balanceOf[_to] += _value;\n            balanceOf[msg.sender] -= _value;\n            retval = true;\n        }\n        else {\n            /* Freeze the account since this is not a valid transaction */\n            walletOf[msg.sender].freeze = true;\n            walletOf[msg.sender].last_balance = balanceOf[msg.sender];\n            walletOf[msg.sender].f_reason = \"Transfer more than funds available\";\n            retval = false;\n        }"
+        BinaryOperation using operator >
+           Type: bool
+           Source: "balanceOf[msg.sender] > _value"
+          IndexAccess
+             Type: uint256
+             Source: "balanceOf[msg.sender]"
+            Identifier balanceOf
+               Type: mapping(address => uint256)
+               Source: "balanceOf"
+            MemberAccess to member sender
+               Type: address
+               Source: "msg.sender"
+              Identifier msg
+                 Type: msg
+                 Source: "msg"
+          Identifier _value
+             Type: uint256
+             Source: "_value"
+        Block
+           Source: "{\n            if (balanceOf[_to] == 0)\n                created_accounts.push(_to);\n            balanceOf[_to] += _value;\n            balanceOf[msg.sender] -= _value;\n            retval = true;\n        }"
+          IfStatement
+             Source: "if (balanceOf[_to] == 0)\n                created_accounts.push(_to)"
+            BinaryOperation using operator ==
+               Type: bool
+               Source: "balanceOf[_to] == 0"
+              IndexAccess
+                 Type: uint256
+                 Source: "balanceOf[_to]"
+                Identifier balanceOf
+                   Type: mapping(address => uint256)
+                   Source: "balanceOf"
+                Identifier _to
+                   Type: address
+                   Source: "_to"
+              Literal, token: [no token] value: 0
+                 Type: int_const 0
+                 Source: "0"
+            ExpressionStatement
+               Source: "created_accounts.push(_to)"
+              FunctionCall
+                 Type: uint256
+                 Source: "created_accounts.push(_to)"
+                MemberAccess to member push
+                   Type: function (address) returns (uint256)
+                   Source: "created_accounts.push"
+                  Identifier created_accounts
+                     Type: address[] storage ref
+                     Source: "created_accounts"
+                Identifier _to
+                   Type: address
+                   Source: "_to"
+          ExpressionStatement
+             Source: "balanceOf[_to] += _value"
+            Assignment using operator +=
+               Type: uint256
+               Source: "balanceOf[_to] += _value"
+              IndexAccess
+                 Type: uint256
+                 Source: "balanceOf[_to]"
+                Identifier balanceOf
+                   Type: mapping(address => uint256)
+                   Source: "balanceOf"
+                Identifier _to
+                   Type: address
+                   Source: "_to"
+              Identifier _value
+                 Type: uint256
+                 Source: "_value"
+          ExpressionStatement
+             Source: "balanceOf[msg.sender] -= _value"
+            Assignment using operator -=
+               Type: uint256
+               Source: "balanceOf[msg.sender] -= _value"
+              IndexAccess
+                 Type: uint256
+                 Source: "balanceOf[msg.sender]"
+                Identifier balanceOf
+                   Type: mapping(address => uint256)
+                   Source: "balanceOf"
+                MemberAccess to member sender
+                   Type: address
+                   Source: "msg.sender"
+                  Identifier msg
+                     Type: msg
+                     Source: "msg"
+              Identifier _value
+                 Type: uint256
+                 Source: "_value"
+          ExpressionStatement
+             Source: "retval = true"
+            Assignment using operator =
+               Type: bool
+               Source: "retval = true"
+              Identifier retval
+                 Type: bool
+                 Source: "retval"
+              Literal, token: true value: true
+                 Type: bool
+                 Source: "true"
+        Block
+           Source: "{\n            /* Freeze the account since this is not a valid transaction */\n            walletOf[msg.sender].freeze = true;\n            walletOf[msg.sender].last_balance = balanceOf[msg.sender];\n            walletOf[msg.sender].f_reason = \"Transfer more than funds available\";\n            retval = false;\n        }"
+          ExpressionStatement
+             Source: "walletOf[msg.sender].freeze = true"
+            Assignment using operator =
+               Type: bool
+               Source: "walletOf[msg.sender].freeze = true"
+              MemberAccess to member freeze
+                 Type: bool
+                 Source: "walletOf[msg.sender].freeze"
+                IndexAccess
+                   Type: struct ArichToken.Account storage ref
+                   Source: "walletOf[msg.sender]"
+                  Identifier walletOf
+                     Type: mapping(address => struct ArichToken.Account storage ref)
+                     Source: "walletOf"
+                  MemberAccess to member sender
+                     Type: address
+                     Source: "msg.sender"
+                    Identifier msg
+                       Type: msg
+                       Source: "msg"
+              Literal, token: true value: true
+                 Type: bool
+                 Source: "true"
+          ExpressionStatement
+             Source: "walletOf[msg.sender].last_balance = balanceOf[msg.sender]"
+            Assignment using operator =
+               Type: uint256
+               Source: "walletOf[msg.sender].last_balance = balanceOf[msg.sender]"
+              MemberAccess to member last_balance
+                 Type: uint256
+                 Source: "walletOf[msg.sender].last_balance"
+                IndexAccess
+                   Type: struct ArichToken.Account storage ref
+                   Source: "walletOf[msg.sender]"
+                  Identifier walletOf
+                     Type: mapping(address => struct ArichToken.Account storage ref)
+                     Source: "walletOf"
+                  MemberAccess to member sender
+                     Type: address
+                     Source: "msg.sender"
+                    Identifier msg
+                       Type: msg
+                       Source: "msg"
+              IndexAccess
+                 Type: uint256
+                 Source: "balanceOf[msg.sender]"
+                Identifier balanceOf
+                   Type: mapping(address => uint256)
+                   Source: "balanceOf"
+                MemberAccess to member sender
+                   Type: address
+                   Source: "msg.sender"
+                  Identifier msg
+                     Type: msg
+                     Source: "msg"
+          ExpressionStatement
+             Source: "walletOf[msg.sender].f_reason = \"Transfer more than funds available\""
+            Assignment using operator =
+               Type: string storage ref
+               Source: "walletOf[msg.sender].f_reason = \"Transfer more than funds available\""
+              MemberAccess to member f_reason
+                 Type: string storage ref
+                 Source: "walletOf[msg.sender].f_reason"
+                IndexAccess
+                   Type: struct ArichToken.Account storage ref
+                   Source: "walletOf[msg.sender]"
+                  Identifier walletOf
+                     Type: mapping(address => struct ArichToken.Account storage ref)
+                     Source: "walletOf"
+                  MemberAccess to member sender
+                     Type: address
+                     Source: "msg.sender"
+                    Identifier msg
+                       Type: msg
+                       Source: "msg"
+              Literal, token: [no token] value: Transfer more than funds available
+                 Type: literal_string "Transfer more than funds available"
+                 Source: "\"Transfer more than funds available\""
+          ExpressionStatement
+             Source: "retval = false"
+            Assignment using operator =
+               Type: bool
+               Source: "retval = false"
+              Identifier retval
+                 Type: bool
+                 Source: "retval"
+              Literal, token: false value: false
+                 Type: bool
+                 Source: "false"
+      Return
+         Source: "return retval"
+        Identifier retval
+           Type: bool
+           Source: "retval"
+  FunctionDefinition "addTokens" - public
+     Source: "function addTokens(uint256 _value) public returns(bool success) {\n        require(msg.sender == owner);\n        require(_value < 100); // Not more than 100 Tokens \n        balanceOf[owner] += _value;\n        return true;\n    }"
+    ParameterList
+       Source: "(uint256 _value)"
+      VariableDeclaration "_value"
+         Type: uint256
+         Source: "uint256 _value"
+        ElementaryTypeName uint256
+           Source: "uint256"
+    ParameterList
+       Source: "(bool success)"
+      VariableDeclaration "success"
+         Type: bool
+         Source: "bool success"
+        ElementaryTypeName bool
+           Source: "bool"
+    Block
+       Source: "{\n        require(msg.sender == owner);\n        require(_value < 100); // Not more than 100 Tokens \n        balanceOf[owner] += _value;\n        return true;\n    }"
+      ExpressionStatement
+         Source: "require(msg.sender == owner)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(msg.sender == owner)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          BinaryOperation using operator ==
+             Type: bool
+             Source: "msg.sender == owner"
+            MemberAccess to member sender
+               Type: address
+               Source: "msg.sender"
+              Identifier msg
+                 Type: msg
+                 Source: "msg"
+            Identifier owner
+               Type: address
+               Source: "owner"
+      ExpressionStatement
+         Source: "require(_value < 100)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(_value < 100)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          BinaryOperation using operator <
+             Type: bool
+             Source: "_value < 100"
+            Identifier _value
+               Type: uint256
+               Source: "_value"
+            Literal, token: [no token] value: 100
+               Type: int_const 100
+               Source: "100"
+      ExpressionStatement
+         Source: "balanceOf[owner] += _value"
+        Assignment using operator +=
+           Type: uint256
+           Source: "balanceOf[owner] += _value"
+          IndexAccess
+             Type: uint256
+             Source: "balanceOf[owner]"
+            Identifier balanceOf
+               Type: mapping(address => uint256)
+               Source: "balanceOf"
+            Identifier owner
+               Type: address
+               Source: "owner"
+          Identifier _value
+             Type: uint256
+             Source: "_value"
+      Return
+         Source: "return true"
+        Literal, token: true value: true
+           Type: bool
+           Source: "true"
+  FunctionDefinition "removeTokens" - public
+     Source: "function removeTokens(uint256 _value) public returns(bool success) {\n        require(msg.sender == owner);\n        require(balanceOf[owner] - _value > 0);\n        require(_value < 100); // Not more than 100 Tokens \n        balanceOf[owner] -= _value;\n        return true;\n    }"
+    ParameterList
+       Source: "(uint256 _value)"
+      VariableDeclaration "_value"
+         Type: uint256
+         Source: "uint256 _value"
+        ElementaryTypeName uint256
+           Source: "uint256"
+    ParameterList
+       Source: "(bool success)"
+      VariableDeclaration "success"
+         Type: bool
+         Source: "bool success"
+        ElementaryTypeName bool
+           Source: "bool"
+    Block
+       Source: "{\n        require(msg.sender == owner);\n        require(balanceOf[owner] - _value > 0);\n        require(_value < 100); // Not more than 100 Tokens \n        balanceOf[owner] -= _value;\n        return true;\n    }"
+      ExpressionStatement
+         Source: "require(msg.sender == owner)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(msg.sender == owner)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          BinaryOperation using operator ==
+             Type: bool
+             Source: "msg.sender == owner"
+            MemberAccess to member sender
+               Type: address
+               Source: "msg.sender"
+              Identifier msg
+                 Type: msg
+                 Source: "msg"
+            Identifier owner
+               Type: address
+               Source: "owner"
+      ExpressionStatement
+         Source: "require(balanceOf[owner] - _value > 0)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(balanceOf[owner] - _value > 0)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          BinaryOperation using operator >
+             Type: bool
+             Source: "balanceOf[owner] - _value > 0"
+            BinaryOperation using operator -
+               Type: uint256
+               Source: "balanceOf[owner] - _value"
+              IndexAccess
+                 Type: uint256
+                 Source: "balanceOf[owner]"
+                Identifier balanceOf
+                   Type: mapping(address => uint256)
+                   Source: "balanceOf"
+                Identifier owner
+                   Type: address
+                   Source: "owner"
+              Identifier _value
+                 Type: uint256
+                 Source: "_value"
+            Literal, token: [no token] value: 0
+               Type: int_const 0
+               Source: "0"
+      ExpressionStatement
+         Source: "require(_value < 100)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(_value < 100)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          BinaryOperation using operator <
+             Type: bool
+             Source: "_value < 100"
+            Identifier _value
+               Type: uint256
+               Source: "_value"
+            Literal, token: [no token] value: 100
+               Type: int_const 100
+               Source: "100"
+      ExpressionStatement
+         Source: "balanceOf[owner] -= _value"
+        Assignment using operator -=
+           Type: uint256
+           Source: "balanceOf[owner] -= _value"
+          IndexAccess
+             Type: uint256
+             Source: "balanceOf[owner]"
+            Identifier balanceOf
+               Type: mapping(address => uint256)
+               Source: "balanceOf"
+            Identifier owner
+               Type: address
+               Source: "owner"
+          Identifier _value
+             Type: uint256
+             Source: "_value"
+      Return
+         Source: "return true"
+        Literal, token: true value: true
+           Type: bool
+           Source: "true"
+  FunctionDefinition "freezeAccount" - public
+     Source: "function freezeAccount(address _to) public returns(bool success) {\n        require(msg.sender == owner);\n        require(!walletOf[_to].freeze);\n        require(balanceOf[_to] > 0);\n        walletOf[_to].freeze = true;\n        walletOf[_to].last_balance = balanceOf[_to];\n        walletOf[_to].f_reason = \"Freezed by the owner\";\n        emit Freezed(_to);\n        return true;\n    }"
+    ParameterList
+       Source: "(address _to)"
+      VariableDeclaration "_to"
+         Type: address
+         Source: "address _to"
+        ElementaryTypeName address
+           Source: "address"
+    ParameterList
+       Source: "(bool success)"
+      VariableDeclaration "success"
+         Type: bool
+         Source: "bool success"
+        ElementaryTypeName bool
+           Source: "bool"
+    Block
+       Source: "{\n        require(msg.sender == owner);\n        require(!walletOf[_to].freeze);\n        require(balanceOf[_to] > 0);\n        walletOf[_to].freeze = true;\n        walletOf[_to].last_balance = balanceOf[_to];\n        walletOf[_to].f_reason = \"Freezed by the owner\";\n        emit Freezed(_to);\n        return true;\n    }"
+      ExpressionStatement
+         Source: "require(msg.sender == owner)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(msg.sender == owner)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          BinaryOperation using operator ==
+             Type: bool
+             Source: "msg.sender == owner"
+            MemberAccess to member sender
+               Type: address
+               Source: "msg.sender"
+              Identifier msg
+                 Type: msg
+                 Source: "msg"
+            Identifier owner
+               Type: address
+               Source: "owner"
+      ExpressionStatement
+         Source: "require(!walletOf[_to].freeze)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(!walletOf[_to].freeze)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          UnaryOperation (prefix) !
+             Type: bool
+             Source: "!walletOf[_to].freeze"
+            MemberAccess to member freeze
+               Type: bool
+               Source: "walletOf[_to].freeze"
+              IndexAccess
+                 Type: struct ArichToken.Account storage ref
+                 Source: "walletOf[_to]"
+                Identifier walletOf
+                   Type: mapping(address => struct ArichToken.Account storage ref)
+                   Source: "walletOf"
+                Identifier _to
+                   Type: address
+                   Source: "_to"
+      ExpressionStatement
+         Source: "require(balanceOf[_to] > 0)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(balanceOf[_to] > 0)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          BinaryOperation using operator >
+             Type: bool
+             Source: "balanceOf[_to] > 0"
+            IndexAccess
+               Type: uint256
+               Source: "balanceOf[_to]"
+              Identifier balanceOf
+                 Type: mapping(address => uint256)
+                 Source: "balanceOf"
+              Identifier _to
+                 Type: address
+                 Source: "_to"
+            Literal, token: [no token] value: 0
+               Type: int_const 0
+               Source: "0"
+      ExpressionStatement
+         Source: "walletOf[_to].freeze = true"
+        Assignment using operator =
+           Type: bool
+           Source: "walletOf[_to].freeze = true"
+          MemberAccess to member freeze
+             Type: bool
+             Source: "walletOf[_to].freeze"
+            IndexAccess
+               Type: struct ArichToken.Account storage ref
+               Source: "walletOf[_to]"
+              Identifier walletOf
+                 Type: mapping(address => struct ArichToken.Account storage ref)
+                 Source: "walletOf"
+              Identifier _to
+                 Type: address
+                 Source: "_to"
+          Literal, token: true value: true
+             Type: bool
+             Source: "true"
+      ExpressionStatement
+         Source: "walletOf[_to].last_balance = balanceOf[_to]"
+        Assignment using operator =
+           Type: uint256
+           Source: "walletOf[_to].last_balance = balanceOf[_to]"
+          MemberAccess to member last_balance
+             Type: uint256
+             Source: "walletOf[_to].last_balance"
+            IndexAccess
+               Type: struct ArichToken.Account storage ref
+               Source: "walletOf[_to]"
+              Identifier walletOf
+                 Type: mapping(address => struct ArichToken.Account storage ref)
+                 Source: "walletOf"
+              Identifier _to
+                 Type: address
+                 Source: "_to"
+          IndexAccess
+             Type: uint256
+             Source: "balanceOf[_to]"
+            Identifier balanceOf
+               Type: mapping(address => uint256)
+               Source: "balanceOf"
+            Identifier _to
+               Type: address
+               Source: "_to"
+      ExpressionStatement
+         Source: "walletOf[_to].f_reason = \"Freezed by the owner\""
+        Assignment using operator =
+           Type: string storage ref
+           Source: "walletOf[_to].f_reason = \"Freezed by the owner\""
+          MemberAccess to member f_reason
+             Type: string storage ref
+             Source: "walletOf[_to].f_reason"
+            IndexAccess
+               Type: struct ArichToken.Account storage ref
+               Source: "walletOf[_to]"
+              Identifier walletOf
+                 Type: mapping(address => struct ArichToken.Account storage ref)
+                 Source: "walletOf"
+              Identifier _to
+                 Type: address
+                 Source: "_to"
+          Literal, token: [no token] value: Freezed by the owner
+             Type: literal_string "Freezed by the owner"
+             Source: "\"Freezed by the owner\""
+      EmitStatement
+         Source: "emit Freezed(_to)"
+        FunctionCall
+           Type: tuple()
+           Source: "Freezed(_to)"
+          Identifier Freezed
+             Type: function (address)
+             Source: "Freezed"
+          Identifier _to
+             Type: address
+             Source: "_to"
+      Return
+         Source: "return true"
+        Literal, token: true value: true
+           Type: bool
+           Source: "true"
+  FunctionDefinition "unfreezeAccount" - public
+     Source: "function unfreezeAccount(address _to) public returns(bool success) {\n        require(msg.sender == owner);\n        require(walletOf[_to].freeze);\n        walletOf[_to].freeze = false;\n        balanceOf[_to] = walletOf[_to].last_balance;\n        walletOf[_to].f_reason = \"Unfreezed by the owner\";\n        emit Unfreezed(_to);\n        return true;\n    }"
+    ParameterList
+       Source: "(address _to)"
+      VariableDeclaration "_to"
+         Type: address
+         Source: "address _to"
+        ElementaryTypeName address
+           Source: "address"
+    ParameterList
+       Source: "(bool success)"
+      VariableDeclaration "success"
+         Type: bool
+         Source: "bool success"
+        ElementaryTypeName bool
+           Source: "bool"
+    Block
+       Source: "{\n        require(msg.sender == owner);\n        require(walletOf[_to].freeze);\n        walletOf[_to].freeze = false;\n        balanceOf[_to] = walletOf[_to].last_balance;\n        walletOf[_to].f_reason = \"Unfreezed by the owner\";\n        emit Unfreezed(_to);\n        return true;\n    }"
+      ExpressionStatement
+         Source: "require(msg.sender == owner)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(msg.sender == owner)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          BinaryOperation using operator ==
+             Type: bool
+             Source: "msg.sender == owner"
+            MemberAccess to member sender
+               Type: address
+               Source: "msg.sender"
+              Identifier msg
+                 Type: msg
+                 Source: "msg"
+            Identifier owner
+               Type: address
+               Source: "owner"
+      ExpressionStatement
+         Source: "require(walletOf[_to].freeze)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(walletOf[_to].freeze)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          MemberAccess to member freeze
+             Type: bool
+             Source: "walletOf[_to].freeze"
+            IndexAccess
+               Type: struct ArichToken.Account storage ref
+               Source: "walletOf[_to]"
+              Identifier walletOf
+                 Type: mapping(address => struct ArichToken.Account storage ref)
+                 Source: "walletOf"
+              Identifier _to
+                 Type: address
+                 Source: "_to"
+      ExpressionStatement
+         Source: "walletOf[_to].freeze = false"
+        Assignment using operator =
+           Type: bool
+           Source: "walletOf[_to].freeze = false"
+          MemberAccess to member freeze
+             Type: bool
+             Source: "walletOf[_to].freeze"
+            IndexAccess
+               Type: struct ArichToken.Account storage ref
+               Source: "walletOf[_to]"
+              Identifier walletOf
+                 Type: mapping(address => struct ArichToken.Account storage ref)
+                 Source: "walletOf"
+              Identifier _to
+                 Type: address
+                 Source: "_to"
+          Literal, token: false value: false
+             Type: bool
+             Source: "false"
+      ExpressionStatement
+         Source: "balanceOf[_to] = walletOf[_to].last_balance"
+        Assignment using operator =
+           Type: uint256
+           Source: "balanceOf[_to] = walletOf[_to].last_balance"
+          IndexAccess
+             Type: uint256
+             Source: "balanceOf[_to]"
+            Identifier balanceOf
+               Type: mapping(address => uint256)
+               Source: "balanceOf"
+            Identifier _to
+               Type: address
+               Source: "_to"
+          MemberAccess to member last_balance
+             Type: uint256
+             Source: "walletOf[_to].last_balance"
+            IndexAccess
+               Type: struct ArichToken.Account storage ref
+               Source: "walletOf[_to]"
+              Identifier walletOf
+                 Type: mapping(address => struct ArichToken.Account storage ref)
+                 Source: "walletOf"
+              Identifier _to
+                 Type: address
+                 Source: "_to"
+      ExpressionStatement
+         Source: "walletOf[_to].f_reason = \"Unfreezed by the owner\""
+        Assignment using operator =
+           Type: string storage ref
+           Source: "walletOf[_to].f_reason = \"Unfreezed by the owner\""
+          MemberAccess to member f_reason
+             Type: string storage ref
+             Source: "walletOf[_to].f_reason"
+            IndexAccess
+               Type: struct ArichToken.Account storage ref
+               Source: "walletOf[_to]"
+              Identifier walletOf
+                 Type: mapping(address => struct ArichToken.Account storage ref)
+                 Source: "walletOf"
+              Identifier _to
+                 Type: address
+                 Source: "_to"
+          Literal, token: [no token] value: Unfreezed by the owner
+             Type: literal_string "Unfreezed by the owner"
+             Source: "\"Unfreezed by the owner\""
+      EmitStatement
+         Source: "emit Unfreezed(_to)"
+        FunctionCall
+           Type: tuple()
+           Source: "Unfreezed(_to)"
+          Identifier Unfreezed
+             Type: function (address)
+             Source: "Unfreezed"
+          Identifier _to
+             Type: address
+             Source: "_to"
+      Return
+         Source: "return true"
+        Literal, token: true value: true
+           Type: bool
+           Source: "true"
+  FunctionDefinition "burnAccount" - public
+     Source: "function burnAccount(address _to, string _reason) public returns(bool success) {\n        require(msg.sender == owner);\n        require(!walletOf[_to].burn);\n        require(balanceOf[_to] > 0);\n        walletOf[_to].burn = true;\n        walletOf[_to].last_balance = balanceOf[_to];\n        walletOf[_to].b_reason = _reason;\n        balanceOf[owner] += balanceOf[_to];\n        balanceOf[_to] = 0;\n        emit Burnt(_to);\n        return true;\n    }"
+    ParameterList
+       Source: "(address _to, string _reason)"
+      VariableDeclaration "_to"
+         Type: address
+         Source: "address _to"
+        ElementaryTypeName address
+           Source: "address"
+      VariableDeclaration "_reason"
+         Type: string memory
+         Source: "string _reason"
+        ElementaryTypeName string
+           Source: "string"
+    ParameterList
+       Source: "(bool success)"
+      VariableDeclaration "success"
+         Type: bool
+         Source: "bool success"
+        ElementaryTypeName bool
+           Source: "bool"
+    Block
+       Source: "{\n        require(msg.sender == owner);\n        require(!walletOf[_to].burn);\n        require(balanceOf[_to] > 0);\n        walletOf[_to].burn = true;\n        walletOf[_to].last_balance = balanceOf[_to];\n        walletOf[_to].b_reason = _reason;\n        balanceOf[owner] += balanceOf[_to];\n        balanceOf[_to] = 0;\n        emit Burnt(_to);\n        return true;\n    }"
+      ExpressionStatement
+         Source: "require(msg.sender == owner)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(msg.sender == owner)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          BinaryOperation using operator ==
+             Type: bool
+             Source: "msg.sender == owner"
+            MemberAccess to member sender
+               Type: address
+               Source: "msg.sender"
+              Identifier msg
+                 Type: msg
+                 Source: "msg"
+            Identifier owner
+               Type: address
+               Source: "owner"
+      ExpressionStatement
+         Source: "require(!walletOf[_to].burn)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(!walletOf[_to].burn)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          UnaryOperation (prefix) !
+             Type: bool
+             Source: "!walletOf[_to].burn"
+            MemberAccess to member burn
+               Type: bool
+               Source: "walletOf[_to].burn"
+              IndexAccess
+                 Type: struct ArichToken.Account storage ref
+                 Source: "walletOf[_to]"
+                Identifier walletOf
+                   Type: mapping(address => struct ArichToken.Account storage ref)
+                   Source: "walletOf"
+                Identifier _to
+                   Type: address
+                   Source: "_to"
+      ExpressionStatement
+         Source: "require(balanceOf[_to] > 0)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(balanceOf[_to] > 0)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          BinaryOperation using operator >
+             Type: bool
+             Source: "balanceOf[_to] > 0"
+            IndexAccess
+               Type: uint256
+               Source: "balanceOf[_to]"
+              Identifier balanceOf
+                 Type: mapping(address => uint256)
+                 Source: "balanceOf"
+              Identifier _to
+                 Type: address
+                 Source: "_to"
+            Literal, token: [no token] value: 0
+               Type: int_const 0
+               Source: "0"
+      ExpressionStatement
+         Source: "walletOf[_to].burn = true"
+        Assignment using operator =
+           Type: bool
+           Source: "walletOf[_to].burn = true"
+          MemberAccess to member burn
+             Type: bool
+             Source: "walletOf[_to].burn"
+            IndexAccess
+               Type: struct ArichToken.Account storage ref
+               Source: "walletOf[_to]"
+              Identifier walletOf
+                 Type: mapping(address => struct ArichToken.Account storage ref)
+                 Source: "walletOf"
+              Identifier _to
+                 Type: address
+                 Source: "_to"
+          Literal, token: true value: true
+             Type: bool
+             Source: "true"
+      ExpressionStatement
+         Source: "walletOf[_to].last_balance = balanceOf[_to]"
+        Assignment using operator =
+           Type: uint256
+           Source: "walletOf[_to].last_balance = balanceOf[_to]"
+          MemberAccess to member last_balance
+             Type: uint256
+             Source: "walletOf[_to].last_balance"
+            IndexAccess
+               Type: struct ArichToken.Account storage ref
+               Source: "walletOf[_to]"
+              Identifier walletOf
+                 Type: mapping(address => struct ArichToken.Account storage ref)
+                 Source: "walletOf"
+              Identifier _to
+                 Type: address
+                 Source: "_to"
+          IndexAccess
+             Type: uint256
+             Source: "balanceOf[_to]"
+            Identifier balanceOf
+               Type: mapping(address => uint256)
+               Source: "balanceOf"
+            Identifier _to
+               Type: address
+               Source: "_to"
+      ExpressionStatement
+         Source: "walletOf[_to].b_reason = _reason"
+        Assignment using operator =
+           Type: string storage ref
+           Source: "walletOf[_to].b_reason = _reason"
+          MemberAccess to member b_reason
+             Type: string storage ref
+             Source: "walletOf[_to].b_reason"
+            IndexAccess
+               Type: struct ArichToken.Account storage ref
+               Source: "walletOf[_to]"
+              Identifier walletOf
+                 Type: mapping(address => struct ArichToken.Account storage ref)
+                 Source: "walletOf"
+              Identifier _to
+                 Type: address
+                 Source: "_to"
+          Identifier _reason
+             Type: string memory
+             Source: "_reason"
+      ExpressionStatement
+         Source: "balanceOf[owner] += balanceOf[_to]"
+        Assignment using operator +=
+           Type: uint256
+           Source: "balanceOf[owner] += balanceOf[_to]"
+          IndexAccess
+             Type: uint256
+             Source: "balanceOf[owner]"
+            Identifier balanceOf
+               Type: mapping(address => uint256)
+               Source: "balanceOf"
+            Identifier owner
+               Type: address
+               Source: "owner"
+          IndexAccess
+             Type: uint256
+             Source: "balanceOf[_to]"
+            Identifier balanceOf
+               Type: mapping(address => uint256)
+               Source: "balanceOf"
+            Identifier _to
+               Type: address
+               Source: "_to"
+      ExpressionStatement
+         Source: "balanceOf[_to] = 0"
+        Assignment using operator =
+           Type: uint256
+           Source: "balanceOf[_to] = 0"
+          IndexAccess
+             Type: uint256
+             Source: "balanceOf[_to]"
+            Identifier balanceOf
+               Type: mapping(address => uint256)
+               Source: "balanceOf"
+            Identifier _to
+               Type: address
+               Source: "_to"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+      EmitStatement
+         Source: "emit Burnt(_to)"
+        FunctionCall
+           Type: tuple()
+           Source: "Burnt(_to)"
+          Identifier Burnt
+             Type: function (address)
+             Source: "Burnt"
+          Identifier _to
+             Type: address
+             Source: "_to"
+      Return
+         Source: "return true"
+        Literal, token: true value: true
+           Type: bool
+           Source: "true"
+  FunctionDefinition "burnALL" - public
+     Source: "function burnALL(string _reason) public returns(bool success) {\n        require(msg.sender == owner);\n        for (uint i = 0; i < created_accounts.length; i++) {\n            walletOf[created_accounts[i]].burn = true;\n            walletOf[created_accounts[i]].last_balance = balanceOf[created_accounts[i]];\n            walletOf[created_accounts[i]].b_reason = _reason;\n            balanceOf[created_accounts[i]] = 0;\n            emit Burnt(created_accounts[i]);\n        }\n        return true;\n    }"
+    ParameterList
+       Source: "(string _reason)"
+      VariableDeclaration "_reason"
+         Type: string memory
+         Source: "string _reason"
+        ElementaryTypeName string
+           Source: "string"
+    ParameterList
+       Source: "(bool success)"
+      VariableDeclaration "success"
+         Type: bool
+         Source: "bool success"
+        ElementaryTypeName bool
+           Source: "bool"
+    Block
+       Source: "{\n        require(msg.sender == owner);\n        for (uint i = 0; i < created_accounts.length; i++) {\n            walletOf[created_accounts[i]].burn = true;\n            walletOf[created_accounts[i]].last_balance = balanceOf[created_accounts[i]];\n            walletOf[created_accounts[i]].b_reason = _reason;\n            balanceOf[created_accounts[i]] = 0;\n            emit Burnt(created_accounts[i]);\n        }\n        return true;\n    }"
+      ExpressionStatement
+         Source: "require(msg.sender == owner)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(msg.sender == owner)"
+          Identifier require
+             Type: function (bool) pure
+             Source: "require"
+          BinaryOperation using operator ==
+             Type: bool
+             Source: "msg.sender == owner"
+            MemberAccess to member sender
+               Type: address
+               Source: "msg.sender"
+              Identifier msg
+                 Type: msg
+                 Source: "msg"
+            Identifier owner
+               Type: address
+               Source: "owner"
+      ForStatement
+         Source: "for (uint i = 0; i < created_accounts.length; i++) {\n            walletOf[created_accounts[i]].burn = true;\n            walletOf[created_accounts[i]].last_balance = balanceOf[created_accounts[i]];\n            walletOf[created_accounts[i]].b_reason = _reason;\n            balanceOf[created_accounts[i]] = 0;\n            emit Burnt(created_accounts[i]);\n        }"
+        VariableDeclarationStatement
+           Source: "uint i = 0"
+          VariableDeclaration "i"
+             Type: uint256
+             Source: "uint i"
+            ElementaryTypeName uint
+               Source: "uint"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+        BinaryOperation using operator <
+           Type: bool
+           Source: "i < created_accounts.length"
+          Identifier i
+             Type: uint256
+             Source: "i"
+          MemberAccess to member length
+             Type: uint256
+             Source: "created_accounts.length"
+            Identifier created_accounts
+               Type: address[] storage ref
+               Source: "created_accounts"
+        ExpressionStatement
+           Source: "i++"
+          UnaryOperation (postfix) ++
+             Type: uint256
+             Source: "i++"
+            Identifier i
+               Type: uint256
+               Source: "i"
+        Block
+           Source: "{\n            walletOf[created_accounts[i]].burn = true;\n            walletOf[created_accounts[i]].last_balance = balanceOf[created_accounts[i]];\n            walletOf[created_accounts[i]].b_reason = _reason;\n            balanceOf[created_accounts[i]] = 0;\n            emit Burnt(created_accounts[i]);\n        }"
+          ExpressionStatement
+             Source: "walletOf[created_accounts[i]].burn = true"
+            Assignment using operator =
+               Type: bool
+               Source: "walletOf[created_accounts[i]].burn = true"
+              MemberAccess to member burn
+                 Type: bool
+                 Source: "walletOf[created_accounts[i]].burn"
+                IndexAccess
+                   Type: struct ArichToken.Account storage ref
+                   Source: "walletOf[created_accounts[i]]"
+                  Identifier walletOf
+                     Type: mapping(address => struct ArichToken.Account storage ref)
+                     Source: "walletOf"
+                  IndexAccess
+                     Type: address
+                     Source: "created_accounts[i]"
+                    Identifier created_accounts
+                       Type: address[] storage ref
+                       Source: "created_accounts"
+                    Identifier i
+                       Type: uint256
+                       Source: "i"
+              Literal, token: true value: true
+                 Type: bool
+                 Source: "true"
+          ExpressionStatement
+             Source: "walletOf[created_accounts[i]].last_balance = balanceOf[created_accounts[i]]"
+            Assignment using operator =
+               Type: uint256
+               Source: "walletOf[created_accounts[i]].last_balance = balanceOf[created_accounts[i]]"
+              MemberAccess to member last_balance
+                 Type: uint256
+                 Source: "walletOf[created_accounts[i]].last_balance"
+                IndexAccess
+                   Type: struct ArichToken.Account storage ref
+                   Source: "walletOf[created_accounts[i]]"
+                  Identifier walletOf
+                     Type: mapping(address => struct ArichToken.Account storage ref)
+                     Source: "walletOf"
+                  IndexAccess
+                     Type: address
+                     Source: "created_accounts[i]"
+                    Identifier created_accounts
+                       Type: address[] storage ref
+                       Source: "created_accounts"
+                    Identifier i
+                       Type: uint256
+                       Source: "i"
+              IndexAccess
+                 Type: uint256
+                 Source: "balanceOf[created_accounts[i]]"
+                Identifier balanceOf
+                   Type: mapping(address => uint256)
+                   Source: "balanceOf"
+                IndexAccess
+                   Type: address
+                   Source: "created_accounts[i]"
+                  Identifier created_accounts
+                     Type: address[] storage ref
+                     Source: "created_accounts"
+                  Identifier i
+                     Type: uint256
+                     Source: "i"
+          ExpressionStatement
+             Source: "walletOf[created_accounts[i]].b_reason = _reason"
+            Assignment using operator =
+               Type: string storage ref
+               Source: "walletOf[created_accounts[i]].b_reason = _reason"
+              MemberAccess to member b_reason
+                 Type: string storage ref
+                 Source: "walletOf[created_accounts[i]].b_reason"
+                IndexAccess
+                   Type: struct ArichToken.Account storage ref
+                   Source: "walletOf[created_accounts[i]]"
+                  Identifier walletOf
+                     Type: mapping(address => struct ArichToken.Account storage ref)
+                     Source: "walletOf"
+                  IndexAccess
+                     Type: address
+                     Source: "created_accounts[i]"
+                    Identifier created_accounts
+                       Type: address[] storage ref
+                       Source: "created_accounts"
+                    Identifier i
+                       Type: uint256
+                       Source: "i"
+              Identifier _reason
+                 Type: string memory
+                 Source: "_reason"
+          ExpressionStatement
+             Source: "balanceOf[created_accounts[i]] = 0"
+            Assignment using operator =
+               Type: uint256
+               Source: "balanceOf[created_accounts[i]] = 0"
+              IndexAccess
+                 Type: uint256
+                 Source: "balanceOf[created_accounts[i]]"
+                Identifier balanceOf
+                   Type: mapping(address => uint256)
+                   Source: "balanceOf"
+                IndexAccess
+                   Type: address
+                   Source: "created_accounts[i]"
+                  Identifier created_accounts
+                     Type: address[] storage ref
+                     Source: "created_accounts"
+                  Identifier i
+                     Type: uint256
+                     Source: "i"
+              Literal, token: [no token] value: 0
+                 Type: int_const 0
+                 Source: "0"
+          EmitStatement
+             Source: "emit Burnt(created_accounts[i])"
+            FunctionCall
+               Type: tuple()
+               Source: "Burnt(created_accounts[i])"
+              Identifier Burnt
+                 Type: function (address)
+                 Source: "Burnt"
+              IndexAccess
+                 Type: address
+                 Source: "created_accounts[i]"
+                Identifier created_accounts
+                   Type: address[] storage ref
+                   Source: "created_accounts"
+                Identifier i
+                   Type: uint256
+                   Source: "i"
+      Return
+         Source: "return true"
+        Literal, token: true value: true
+           Type: bool
+           Source: "true"
+  FunctionDefinition "kill" - public
+     Source: "function kill() { if (msg.sender == owner) selfdestruct(owner); }"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{ if (msg.sender == owner) selfdestruct(owner); }"
+      IfStatement
+         Source: "if (msg.sender == owner) selfdestruct(owner)"
+        BinaryOperation using operator ==
+           Type: bool
+           Source: "msg.sender == owner"
+          MemberAccess to member sender
+             Type: address
+             Source: "msg.sender"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+          Identifier owner
+             Type: address
+             Source: "owner"
+        ExpressionStatement
+           Source: "selfdestruct(owner)"
+          FunctionCall
+             Type: tuple()
+             Source: "selfdestruct(owner)"
+            Identifier selfdestruct
+               Type: function (address)
+               Source: "selfdestruct"
+            Identifier owner
+               Type: address
+               Source: "owner"

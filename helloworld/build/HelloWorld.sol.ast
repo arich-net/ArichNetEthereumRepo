@@ -1,0 +1,117 @@
+PragmaDirective
+   Source: "pragma solidity ^0.4.16;"
+ContractDefinition "life"
+   Source: "contract life {\n    address owner;\n    constructor() public { owner = msg.sender; }\n    function kill() public { if (msg.sender == owner) selfdestruct(owner); }\n}"
+  VariableDeclaration "owner"
+     Type: address
+     Source: "address owner"
+    ElementaryTypeName address
+       Source: "address"
+  FunctionDefinition "" - public
+     Source: "constructor() public { owner = msg.sender; }"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{ owner = msg.sender; }"
+      ExpressionStatement
+         Source: "owner = msg.sender"
+        Assignment using operator =
+           Type: address
+           Source: "owner = msg.sender"
+          Identifier owner
+             Type: address
+             Source: "owner"
+          MemberAccess to member sender
+             Type: address
+             Source: "msg.sender"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+  FunctionDefinition "kill" - public
+     Source: "function kill() public { if (msg.sender == owner) selfdestruct(owner); }"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{ if (msg.sender == owner) selfdestruct(owner); }"
+      IfStatement
+         Source: "if (msg.sender == owner) selfdestruct(owner)"
+        BinaryOperation using operator ==
+           Type: bool
+           Source: "msg.sender == owner"
+          MemberAccess to member sender
+             Type: address
+             Source: "msg.sender"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+          Identifier owner
+             Type: address
+             Source: "owner"
+        ExpressionStatement
+           Source: "selfdestruct(owner)"
+          FunctionCall
+             Type: tuple()
+             Source: "selfdestruct(owner)"
+            Identifier selfdestruct
+               Type: function (address)
+               Source: "selfdestruct"
+            Identifier owner
+               Type: address
+               Source: "owner"
+ContractDefinition "HelloWorld"
+   Source: "contract HelloWorld is life {\n    string message;\n    constructor(string _message) public {\n        message = _message; }\n    function msg() \n        public \n        view \n        returns(string message) {\n        return message; }\n}"
+  InheritanceSpecifier
+     Source: "life"
+    UserDefinedTypeName "life"
+       Source: "life"
+  VariableDeclaration "message"
+     Type: string storage ref
+     Source: "string message"
+    ElementaryTypeName string
+       Source: "string"
+  FunctionDefinition "" - public
+     Source: "constructor(string _message) public {\n        message = _message; }"
+    ParameterList
+       Source: "(string _message)"
+      VariableDeclaration "_message"
+         Type: string memory
+         Source: "string _message"
+        ElementaryTypeName string
+           Source: "string"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{\n        message = _message; }"
+      ExpressionStatement
+         Source: "message = _message"
+        Assignment using operator =
+           Type: string storage ref
+           Source: "message = _message"
+          Identifier message
+             Type: string storage ref
+             Source: "message"
+          Identifier _message
+             Type: string memory
+             Source: "_message"
+  FunctionDefinition "msg" - public - const
+     Source: "function msg() \n        public \n        view \n        returns(string message) {\n        return message; }"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: "(string message)"
+      VariableDeclaration "message"
+         Type: string memory
+         Source: "string message"
+        ElementaryTypeName string
+           Source: "string"
+    Block
+       Source: "{\n        return message; }"
+      Return
+         Source: "return message"
+        Identifier message
+           Type: string memory
+           Source: "message"

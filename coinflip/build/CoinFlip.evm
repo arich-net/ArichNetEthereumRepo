@@ -1,0 +1,476 @@
+    /* "CoinFlip.sol":0:802  contract CoinFlip {... */
+  mstore(0x40, 0x80)
+    /* "CoinFlip.sol":213:290  57896044618658097711785492504343953926634992332820282019728792003956564819968 */
+  0x8000000000000000000000000000000000000000000000000000000000000000
+    /* "CoinFlip.sol":189:290  uint256 public FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968 */
+  0x6
+  sstore
+    /* "CoinFlip.sol":295:352  function CoinFlip() public {... */
+  callvalue
+    /* "--CODEGEN--":8:17   */
+  dup1
+    /* "--CODEGEN--":5:7   */
+  iszero
+  tag_1
+  jumpi
+    /* "--CODEGEN--":30:31   */
+  0x0
+    /* "--CODEGEN--":27:28   */
+  dup1
+    /* "--CODEGEN--":20:32   */
+  revert
+    /* "--CODEGEN--":5:7   */
+tag_1:
+  pop
+    /* "CoinFlip.sol":346:347  0 */
+  0x0
+    /* "CoinFlip.sol":328:347  consecutiveWins = 0 */
+  dup1
+  sstore
+    /* "CoinFlip.sol":0:802  contract CoinFlip {... */
+  dataSize(sub_0)
+  dup1
+  dataOffset(sub_0)
+  0x0
+  codecopy
+  0x0
+  return
+stop
+
+sub_0: assembly {
+        /* "CoinFlip.sol":0:802  contract CoinFlip {... */
+      mstore(0x40, 0x80)
+      jumpi(tag_1, lt(calldatasize, 0x4))
+      and(div(calldataload(0x0), 0x100000000000000000000000000000000000000000000000000000000), 0xffffffff)
+      0x1d263f67
+      dup2
+      eq
+      tag_2
+      jumpi
+      dup1
+      0x35815b95
+      eq
+      tag_3
+      jumpi
+      dup1
+      0x3fa21806
+      eq
+      tag_4
+      jumpi
+      dup1
+      0x57e871e7
+      eq
+      tag_5
+      jumpi
+      dup1
+      0x5ac947cb
+      eq
+      tag_6
+      jumpi
+      dup1
+      0x8475c028
+      eq
+      tag_7
+      jumpi
+      dup1
+      0xe6f334d7
+      eq
+      tag_8
+      jumpi
+      dup1
+      0xf852be69
+      eq
+      tag_9
+      jumpi
+    tag_1:
+      0x0
+      dup1
+      revert
+        /* "CoinFlip.sol":356:800  function flip(bool _guess) public returns (bool) {... */
+    tag_2:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_10
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_10:
+      pop
+        /* "CoinFlip.sol":356:800  function flip(bool _guess) public returns (bool) {... */
+      tag_11
+      iszero(iszero(calldataload(0x4)))
+      jump(tag_12)
+    tag_11:
+      0x40
+      dup1
+      mload
+      swap2
+      iszero
+      iszero
+      dup3
+      mstore
+      mload
+      swap1
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      return
+        /* "CoinFlip.sol":189:290  uint256 public FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968 */
+    tag_3:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_13
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_13:
+        /* "CoinFlip.sol":189:290  uint256 public FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968 */
+      pop
+      tag_14
+      jump(tag_15)
+    tag_14:
+      0x40
+      dup1
+      mload
+      swap2
+      dup3
+      mstore
+      mload
+      swap1
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      return
+        /* "CoinFlip.sol":56:79  uint256 public lastHash */
+    tag_4:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_16
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_16:
+        /* "CoinFlip.sol":56:79  uint256 public lastHash */
+      pop
+      tag_14
+      jump(tag_18)
+        /* "CoinFlip.sol":159:185  uint256 public blockNumber */
+    tag_5:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_19
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_19:
+        /* "CoinFlip.sol":159:185  uint256 public blockNumber */
+      pop
+      tag_14
+      jump(tag_21)
+        /* "CoinFlip.sol":132:155  uint256 public coinFlip */
+    tag_6:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_22
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_22:
+        /* "CoinFlip.sol":132:155  uint256 public coinFlip */
+      pop
+      tag_14
+      jump(tag_24)
+        /* "CoinFlip.sol":83:99  bool public side */
+    tag_7:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_25
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_25:
+        /* "CoinFlip.sol":83:99  bool public side */
+      pop
+      tag_11
+      jump(tag_27)
+        /* "CoinFlip.sol":22:52  uint256 public consecutiveWins */
+    tag_8:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_28
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_28:
+        /* "CoinFlip.sol":22:52  uint256 public consecutiveWins */
+      pop
+      tag_14
+      jump(tag_30)
+        /* "CoinFlip.sol":103:128  uint256 public blockValue */
+    tag_9:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_31
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_31:
+        /* "CoinFlip.sol":103:128  uint256 public blockValue */
+      pop
+      tag_14
+      jump(tag_33)
+        /* "CoinFlip.sol":356:800  function flip(bool _guess) public returns (bool) {... */
+    tag_12:
+      not(0x0)
+        /* "CoinFlip.sol":425:437  block.number */
+      number
+        /* "CoinFlip.sol":425:440  block.number -1 */
+      add
+        /* "CoinFlip.sol":411:422  blockNumber */
+      0x5
+        /* "CoinFlip.sol":411:440  blockNumber = block.number -1 */
+      dup2
+      swap1
+      sstore
+        /* "CoinFlip.sol":467:495  block.blockhash(blockNumber) */
+      blockhash
+        /* "CoinFlip.sol":446:456  blockValue */
+      0x3
+        /* "CoinFlip.sol":446:496  blockValue = uint256(block.blockhash(blockNumber)) */
+      dup2
+      swap1
+      sstore
+        /* "CoinFlip.sol":439:440  1 */
+      0x1
+        /* "CoinFlip.sol":507:515  lastHash */
+      sload
+        /* "CoinFlip.sol":399:403  bool */
+      0x0
+      swap2
+        /* "CoinFlip.sol":507:529  lastHash == blockValue */
+      eq
+        /* "CoinFlip.sol":503:554  if (lastHash == blockValue) {... */
+      iszero
+      tag_35
+      jumpi
+        /* "CoinFlip.sol":539:547  revert() */
+      0x0
+      dup1
+      revert
+        /* "CoinFlip.sol":503:554  if (lastHash == blockValue) {... */
+    tag_35:
+        /* "CoinFlip.sol":571:581  blockValue */
+      sload(0x3)
+        /* "CoinFlip.sol":560:568  lastHash */
+      0x1
+        /* "CoinFlip.sol":560:581  lastHash = blockValue */
+      dup2
+      swap1
+      sstore
+        /* "CoinFlip.sol":611:617  FACTOR */
+      sload(0x6)
+      swap1
+        /* "CoinFlip.sol":598:617  blockValue / FACTOR */
+      dup2
+      iszero
+      iszero
+      tag_36
+      jumpi
+      invalid
+    tag_36:
+      div
+        /* "CoinFlip.sol":587:595  coinFlip */
+      0x4
+        /* "CoinFlip.sol":587:617  coinFlip = blockValue / FACTOR */
+      dup2
+      swap1
+      sstore
+        /* "CoinFlip.sol":642:643  1 */
+      0x1
+        /* "CoinFlip.sol":630:643  coinFlip == 1 */
+      eq
+        /* "CoinFlip.sol":630:658  coinFlip == 1 ? true : false */
+      tag_37
+      jumpi
+        /* "CoinFlip.sol":653:658  false */
+      0x0
+        /* "CoinFlip.sol":630:658  coinFlip == 1 ? true : false */
+      jump(tag_38)
+    tag_37:
+        /* "CoinFlip.sol":646:650  true */
+      0x1
+        /* "CoinFlip.sol":630:658  coinFlip == 1 ? true : false */
+    tag_38:
+        /* "CoinFlip.sol":623:627  side */
+      0x2
+        /* "CoinFlip.sol":623:658  side = coinFlip == 1 ? true : false */
+      dup1
+      sload
+      swap2
+      iszero
+      iszero
+      not(0xff)
+      swap1
+      swap3
+      and
+      swap2
+      swap1
+      swap2
+      or
+      swap1
+      dup2
+      swap1
+      sstore
+      0xff
+        /* "CoinFlip.sol":669:673  side */
+      and
+        /* "CoinFlip.sol":669:683  side == _guess */
+      iszero
+      iszero
+      dup3
+      iszero
+      iszero
+      eq
+        /* "CoinFlip.sol":665:796  if (side == _guess) {... */
+      iszero
+      tag_39
+      jumpi
+      pop
+        /* "CoinFlip.sol":693:708  consecutiveWins */
+      0x0
+        /* "CoinFlip.sol":693:710  consecutiveWins++ */
+      dup1
+      sload
+      0x1
+      swap1
+      dup2
+      add
+      swap1
+      swap2
+      sstore
+        /* "CoinFlip.sol":718:729  return true */
+      jump(tag_40)
+        /* "CoinFlip.sol":665:796  if (side == _guess) {... */
+    tag_39:
+      pop
+        /* "CoinFlip.sol":768:769  0 */
+      0x0
+        /* "CoinFlip.sol":750:769  consecutiveWins = 0 */
+      dup1
+      dup1
+      sstore
+        /* "CoinFlip.sol":665:796  if (side == _guess) {... */
+    tag_40:
+        /* "CoinFlip.sol":356:800  function flip(bool _guess) public returns (bool) {... */
+      swap2
+      swap1
+      pop
+      jump	// out
+        /* "CoinFlip.sol":189:290  uint256 public FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968 */
+    tag_15:
+      sload(0x6)
+      dup2
+      jump	// out
+        /* "CoinFlip.sol":56:79  uint256 public lastHash */
+    tag_18:
+      sload(0x1)
+      dup2
+      jump	// out
+        /* "CoinFlip.sol":159:185  uint256 public blockNumber */
+    tag_21:
+      sload(0x5)
+      dup2
+      jump	// out
+        /* "CoinFlip.sol":132:155  uint256 public coinFlip */
+    tag_24:
+      sload(0x4)
+      dup2
+      jump	// out
+        /* "CoinFlip.sol":83:99  bool public side */
+    tag_27:
+      and(0xff, sload(0x2))
+      dup2
+      jump	// out
+        /* "CoinFlip.sol":22:52  uint256 public consecutiveWins */
+    tag_30:
+      sload(0x0)
+      dup2
+      jump	// out
+        /* "CoinFlip.sol":103:128  uint256 public blockValue */
+    tag_33:
+      sload(0x3)
+      dup2
+      jump	// out
+
+    auxdata: 0xa165627a7a7230582010fb7213da2d28ad79315e6f51be7a21b4bbf134856680fd1929742453a677c60029
+}

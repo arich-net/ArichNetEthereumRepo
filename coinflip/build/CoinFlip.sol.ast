@@ -1,0 +1,242 @@
+ContractDefinition "CoinFlip"
+   Source: "contract CoinFlip {\n  uint256 public consecutiveWins;\n  uint256 public lastHash;\n  bool public side;\n  uint256 public blockValue;\n  uint256 public coinFlip;\n  uint256 public blockNumber;\n  uint256 public FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968;\n\n  function CoinFlip() public {\n    consecutiveWins = 0;\n  }\n\n  function flip(bool _guess) public returns (bool) {\n    blockNumber = block.number -1;\n    blockValue = uint256(block.blockhash(blockNumber));\n\n    if (lastHash == blockValue) {\n      revert();\n    }\n\n    lastHash = blockValue;\n    coinFlip = blockValue / FACTOR;\n    side = coinFlip == 1 ? true : false;\n\n    if (side == _guess) {\n      consecutiveWins++;\n      return true;\n    } else {\n      consecutiveWins = 0;\n      return false;\n    }\n  }\n}"
+  VariableDeclaration "consecutiveWins"
+     Type: uint256
+     Source: "uint256 public consecutiveWins"
+    ElementaryTypeName uint256
+       Source: "uint256"
+  VariableDeclaration "lastHash"
+     Type: uint256
+     Source: "uint256 public lastHash"
+    ElementaryTypeName uint256
+       Source: "uint256"
+  VariableDeclaration "side"
+     Type: bool
+     Source: "bool public side"
+    ElementaryTypeName bool
+       Source: "bool"
+  VariableDeclaration "blockValue"
+     Type: uint256
+     Source: "uint256 public blockValue"
+    ElementaryTypeName uint256
+       Source: "uint256"
+  VariableDeclaration "coinFlip"
+     Type: uint256
+     Source: "uint256 public coinFlip"
+    ElementaryTypeName uint256
+       Source: "uint256"
+  VariableDeclaration "blockNumber"
+     Type: uint256
+     Source: "uint256 public blockNumber"
+    ElementaryTypeName uint256
+       Source: "uint256"
+  VariableDeclaration "FACTOR"
+     Type: uint256
+     Source: "uint256 public FACTOR = 57896044618658097711785492504343953926634992332820282019728792003956564819968"
+    ElementaryTypeName uint256
+       Source: "uint256"
+    Literal, token: [no token] value: 57896044618658097711785492504343953926634992332820282019728792003956564819968
+       Type: int_const 5789...(69 digits omitted)...9968
+       Source: "57896044618658097711785492504343953926634992332820282019728792003956564819968"
+  FunctionDefinition "CoinFlip" - public
+     Source: "function CoinFlip() public {\n    consecutiveWins = 0;\n  }"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{\n    consecutiveWins = 0;\n  }"
+      ExpressionStatement
+         Source: "consecutiveWins = 0"
+        Assignment using operator =
+           Type: uint256
+           Source: "consecutiveWins = 0"
+          Identifier consecutiveWins
+             Type: uint256
+             Source: "consecutiveWins"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+  FunctionDefinition "flip" - public
+     Source: "function flip(bool _guess) public returns (bool) {\n    blockNumber = block.number -1;\n    blockValue = uint256(block.blockhash(blockNumber));\n\n    if (lastHash == blockValue) {\n      revert();\n    }\n\n    lastHash = blockValue;\n    coinFlip = blockValue / FACTOR;\n    side = coinFlip == 1 ? true : false;\n\n    if (side == _guess) {\n      consecutiveWins++;\n      return true;\n    } else {\n      consecutiveWins = 0;\n      return false;\n    }\n  }"
+    ParameterList
+       Source: "(bool _guess)"
+      VariableDeclaration "_guess"
+         Type: bool
+         Source: "bool _guess"
+        ElementaryTypeName bool
+           Source: "bool"
+    ParameterList
+       Source: "(bool)"
+      VariableDeclaration ""
+         Type: bool
+         Source: "bool"
+        ElementaryTypeName bool
+           Source: "bool"
+    Block
+       Source: "{\n    blockNumber = block.number -1;\n    blockValue = uint256(block.blockhash(blockNumber));\n\n    if (lastHash == blockValue) {\n      revert();\n    }\n\n    lastHash = blockValue;\n    coinFlip = blockValue / FACTOR;\n    side = coinFlip == 1 ? true : false;\n\n    if (side == _guess) {\n      consecutiveWins++;\n      return true;\n    } else {\n      consecutiveWins = 0;\n      return false;\n    }\n  }"
+      ExpressionStatement
+         Source: "blockNumber = block.number -1"
+        Assignment using operator =
+           Type: uint256
+           Source: "blockNumber = block.number -1"
+          Identifier blockNumber
+             Type: uint256
+             Source: "blockNumber"
+          BinaryOperation using operator -
+             Type: uint256
+             Source: "block.number -1"
+            MemberAccess to member number
+               Type: uint256
+               Source: "block.number"
+              Identifier block
+                 Type: block
+                 Source: "block"
+            Literal, token: [no token] value: 1
+               Type: int_const 1
+               Source: "1"
+      ExpressionStatement
+         Source: "blockValue = uint256(block.blockhash(blockNumber))"
+        Assignment using operator =
+           Type: uint256
+           Source: "blockValue = uint256(block.blockhash(blockNumber))"
+          Identifier blockValue
+             Type: uint256
+             Source: "blockValue"
+          FunctionCall
+             Type: uint256
+             Source: "uint256(block.blockhash(blockNumber))"
+            ElementaryTypeNameExpression uint256
+               Type: type(uint256)
+               Source: "uint256"
+            FunctionCall
+               Type: bytes32
+               Source: "block.blockhash(blockNumber)"
+              MemberAccess to member blockhash
+                 Type: function (uint256) view returns (bytes32)
+                 Source: "block.blockhash"
+                Identifier block
+                   Type: block
+                   Source: "block"
+              Identifier blockNumber
+                 Type: uint256
+                 Source: "blockNumber"
+      IfStatement
+         Source: "if (lastHash == blockValue) {\n      revert();\n    }"
+        BinaryOperation using operator ==
+           Type: bool
+           Source: "lastHash == blockValue"
+          Identifier lastHash
+             Type: uint256
+             Source: "lastHash"
+          Identifier blockValue
+             Type: uint256
+             Source: "blockValue"
+        Block
+           Source: "{\n      revert();\n    }"
+          ExpressionStatement
+             Source: "revert()"
+            FunctionCall
+               Type: tuple()
+               Source: "revert()"
+              Identifier revert
+                 Type: function () pure
+                 Source: "revert"
+      ExpressionStatement
+         Source: "lastHash = blockValue"
+        Assignment using operator =
+           Type: uint256
+           Source: "lastHash = blockValue"
+          Identifier lastHash
+             Type: uint256
+             Source: "lastHash"
+          Identifier blockValue
+             Type: uint256
+             Source: "blockValue"
+      ExpressionStatement
+         Source: "coinFlip = blockValue / FACTOR"
+        Assignment using operator =
+           Type: uint256
+           Source: "coinFlip = blockValue / FACTOR"
+          Identifier coinFlip
+             Type: uint256
+             Source: "coinFlip"
+          BinaryOperation using operator /
+             Type: uint256
+             Source: "blockValue / FACTOR"
+            Identifier blockValue
+               Type: uint256
+               Source: "blockValue"
+            Identifier FACTOR
+               Type: uint256
+               Source: "FACTOR"
+      ExpressionStatement
+         Source: "side = coinFlip == 1 ? true : false"
+        Assignment using operator =
+           Type: bool
+           Source: "side = coinFlip == 1 ? true : false"
+          Identifier side
+             Type: bool
+             Source: "side"
+          Conditional
+             Type: bool
+             Source: "coinFlip == 1 ? true : false"
+            BinaryOperation using operator ==
+               Type: bool
+               Source: "coinFlip == 1"
+              Identifier coinFlip
+                 Type: uint256
+                 Source: "coinFlip"
+              Literal, token: [no token] value: 1
+                 Type: int_const 1
+                 Source: "1"
+            Literal, token: true value: true
+               Type: bool
+               Source: "true"
+            Literal, token: false value: false
+               Type: bool
+               Source: "false"
+      IfStatement
+         Source: "if (side == _guess) {\n      consecutiveWins++;\n      return true;\n    } else {\n      consecutiveWins = 0;\n      return false;\n    }"
+        BinaryOperation using operator ==
+           Type: bool
+           Source: "side == _guess"
+          Identifier side
+             Type: bool
+             Source: "side"
+          Identifier _guess
+             Type: bool
+             Source: "_guess"
+        Block
+           Source: "{\n      consecutiveWins++;\n      return true;\n    }"
+          ExpressionStatement
+             Source: "consecutiveWins++"
+            UnaryOperation (postfix) ++
+               Type: uint256
+               Source: "consecutiveWins++"
+              Identifier consecutiveWins
+                 Type: uint256
+                 Source: "consecutiveWins"
+          Return
+             Source: "return true"
+            Literal, token: true value: true
+               Type: bool
+               Source: "true"
+        Block
+           Source: "{\n      consecutiveWins = 0;\n      return false;\n    }"
+          ExpressionStatement
+             Source: "consecutiveWins = 0"
+            Assignment using operator =
+               Type: uint256
+               Source: "consecutiveWins = 0"
+              Identifier consecutiveWins
+                 Type: uint256
+                 Source: "consecutiveWins"
+              Literal, token: [no token] value: 0
+                 Type: int_const 0
+                 Source: "0"
+          Return
+             Source: "return false"
+            Literal, token: false value: false
+               Type: bool
+               Source: "false"

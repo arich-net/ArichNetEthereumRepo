@@ -1,0 +1,60 @@
+PragmaDirective
+   Source: "pragma solidity ^0.4.20;"
+ContractDefinition "Forcing1"
+   Source: "contract Forcing1 {\n    address public to;\n\n    function Forcing1(address _to) public payable {\n        to = _to;\n    }\n\n    function() public payable {\n    }\n\n    function exploit() public payable {\n        selfdestruct(to);\n    }\n}"
+  VariableDeclaration "to"
+     Type: address
+     Source: "address public to"
+    ElementaryTypeName address
+       Source: "address"
+  FunctionDefinition "Forcing1" - public
+     Source: "function Forcing1(address _to) public payable {\n        to = _to;\n    }"
+    ParameterList
+       Source: "(address _to)"
+      VariableDeclaration "_to"
+         Type: address
+         Source: "address _to"
+        ElementaryTypeName address
+           Source: "address"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{\n        to = _to;\n    }"
+      ExpressionStatement
+         Source: "to = _to"
+        Assignment using operator =
+           Type: address
+           Source: "to = _to"
+          Identifier to
+             Type: address
+             Source: "to"
+          Identifier _to
+             Type: address
+             Source: "_to"
+  FunctionDefinition "" - public
+     Source: "function() public payable {\n    }"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{\n    }"
+  FunctionDefinition "exploit" - public
+     Source: "function exploit() public payable {\n        selfdestruct(to);\n    }"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{\n        selfdestruct(to);\n    }"
+      ExpressionStatement
+         Source: "selfdestruct(to)"
+        FunctionCall
+           Type: tuple()
+           Source: "selfdestruct(to)"
+          Identifier selfdestruct
+             Type: function (address)
+             Source: "selfdestruct"
+          Identifier to
+             Type: address
+             Source: "to"

